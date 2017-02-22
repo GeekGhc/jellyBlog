@@ -1,0 +1,91 @@
+---
+layout: default
+title: jellybean | 葛华春博客
+keywords: 开源,open-source,GitHub,php,开源项目
+class: home
+description: Become A Good Programmer
+menu: Blog
+---
+
+<div class="collection-header">
+    <div class="container">
+        <div class="collection-content">
+            <h1> Become A Good Programmer</h1>
+        </div>
+        <div class="collection-info">
+            <span class="col-item"><i class="fa fa-location-arrow"></i>China Nanjing</span>
+            <span class="col-item"><i class="fa fa-code"></i>ISpace Community</span>
+            <span class="col-item"><i class="fa fa-github"></i>GeekGhc</span>
+        </div>
+    </div>
+</div>
+
+
+<div class="articles-page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                {% for post in paginator.posts %}
+                <div class="media">
+                    <a class="media-left">
+                        <img height="180px" width="260px" src="{{post.poster}}">
+                    </a>
+                    <div class="media-body" style="padding-left: 12px">
+                        <h2 class="media-heading">
+                            <a href="{{ post.url }}">{{post.title}}</a>
+                        </h2>
+                        <div class="description">
+                           {{ post.description }}
+                        </div>
+                        <div class="media-extra">
+                            <div class="ui tag labels">
+                                {% for tag in post.tags %}
+                                <a class="ui tag label">{{tag}} </a>
+                                {% endfor %}
+                            </div>
+                            <div class="media-info">
+                                <div class="media-date">
+                                    <i class="fa fa-calendar"></i>{{ post.date | date: "%Y/%m/%d" }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- 分页链接 -->
+                <div class="pagination text-align">
+                    <div class="btn-group">
+                        {% if paginator.previous_page %}
+                        {% if paginator.previous_page == 1 %}
+                        <a href="/blog/" class="btn btn-outline">&laquo;</a>
+                        {% else %}
+                        <a href="/blog/page{{paginator.previous_page}}"  class="btn btn-outline">&laquo;</a>
+                        {% endif %}
+                        {% else %}
+                        <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
+                        {% endif %}
+                        {% if paginator.page == 1 %}
+                        <a href="javascript:;" class="active btn btn-outline">1</a>
+                        {% else %}
+                        <a href="/blog/"  class="btn btn-outline">1</a>
+                        {% endif %}
+                        {% for count in (2..paginator.total_pages) %}
+                        {% if count == paginator.page %}
+                        <a href="javascript:;"  class="active btn btn-outline">{{count}}</a>
+                        {% else %}
+                        <a href="/blog/page{{count}}"  class="btn btn-outline">{{count}}</a>
+                        {% endif %}
+                        {% endfor %}
+                        {% if paginator.next_page %}
+                        <a href="/blog/page{{paginator.next_page}}"  class="btn btn-outline">&raquo;</a>
+                        {% else %}
+                        <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

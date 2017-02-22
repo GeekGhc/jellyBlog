@@ -1,0 +1,231 @@
+/************** index ***************/
+.site-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+.site-header-nav {
+    float: right;
+    /*margin-bottom: -20px;*/
+}
+
+.site-header h1 {
+    cursor: pointer;
+    color: #000;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 28px;
+    float: left;
+}
+
+.site-header-nav .site-header-nav-item {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 10px 15px;
+    margin-left: 0.5em;
+    font-size: 18px;
+    color: #777;
+    font-weight: bold;
+}
+.site-header-nav .site-header-nav-item:hover{
+    color: #000;
+}
+.home .site-header{
+    background: #614385; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #614385 , #516395); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #614385 , #516395); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Oper*/
+    border-bottom: none;
+}
+.home .site-header  .site-header-nav .site-header-nav-item{
+    color: rgba(255,255,255,.5);
+}
+.home .site-header  .site-header-nav .site-header-nav-item:hover{
+    color: #fff;
+}
+.home .site-header h1{
+    color: #fff;
+}
+.collection-header {
+    margin-top: -20px;
+    /*background: #4183c4;*/
+
+    background: #614385; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #614385 , #516395); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #614385 , #516395); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    color: #fff;
+    padding: 3rem 0;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.footer{
+    margin-top: 30px;
+    color: #777;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+.footer .row button{
+    margin-right: 10px;
+}
+.footer .copyRight{
+    margin-top: 18px;
+    font-size: 16px;
+}
+
+.collection-header .container {
+    text-align: center;
+}
+
+.collection-header .collection-content {
+    /*letter-spacing: .1em;*/
+    padding: 20px 0;
+    vertical-align: middle;
+}
+
+.collection-info {
+    margin: 0;
+}
+
+.collection-info .col-item {
+    margin-right: 16px;
+    font-size: 16px;
+}
+
+.collection-info .col-item i {
+    margin-right: 5px;
+}
+
+.articles-page-content {
+    padding-top: 30px;
+}
+
+.articles-page-content .media {
+    margin-top: 30px !important;
+    border: none;
+    padding-top: 0;
+    padding-bottom: 2em;
+    border-bottom: 1px solid rgba(34, 36, 38, .15);
+}
+
+.articles-page-content .media .media-left {
+    width: 260px;
+    height: 180px;
+}
+
+.articles-page-content .media .media-left img {
+    border-radius: 5px;
+    /*width: 100%;
+    height: 100%;*/
+}
+
+.media-body .media-heading a {
+    cursor: pointer;
+}
+
+.articles-page-content .media .media-body .description {
+    margin-top: .6em;
+    font-size: 0.9em;
+    line-height: 1.4285em;
+    color: #95a5a6;
+}
+
+.articles-page-content .media .media-body .media-extra {
+    margin-top: 16px;
+    color: #888;
+}
+
+.media .media-body .media-extra .media-info {
+    margin-top: 16px;
+    font-size: 1em;
+}
+
+.media .media-body .media-extra .media-info i {
+    margin-right: 6px;
+}
+
+.media-extra .media-info .media-date {
+    display: inline-block;
+    margin-right: 14px;
+}
+
+.media-extra .media-info .media-view-count {
+    display: inline-block;
+}
+
+
+/************** show ***************/
+.article-collection-header{
+    margin-top: -20px;
+    background: #4183c4;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+.error-page .article-collection-header{
+    background: #e96443; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #e96443 , #904e95); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #e96443 , #904e95); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.read-me .article-collection-header{
+    background: #1F1C2C; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1F1C2C , #928DAB); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #1F1C2C , #928DAB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.post-one .article-collection-header{
+    background: #348F50; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #348F50 , #56B4D3); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #348F50 , #56B4D3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.post-two .article-collection-header{
+    background: #1F1C2C; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #1F1C2C , #928DAB); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #1F1C2C , #928DAB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.post-three .article-collection-header{
+    background: #7474BF; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #7474BF , #348AC7); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #7474BF , #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.post-four .article-collection-header{
+    background: #485563; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #485563 , #29323c); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #485563 , #29323c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.post-five .article-collection-header{
+    background: #666600; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #666600 , #999966); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #666600 , #999966); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.article-content{
+    padding: 28px 0px;
+}
+.article-collection-title{
+    margin-bottom: 20px;
+}
+.collection-info a{
+    color: #fff;
+    margin-right: 6px;
+}
+.article-collection-dataInfo{
+    margin-top: 12px;
+}
+.article-collection-dataInfo i{
+    margin-right: 6px;
+}

@@ -1,0 +1,50 @@
+---
+layout: default
+comments: true
+---
+<div class="article-collection-header">
+    <div class="container">
+        <div class="article-collection-title">
+            <h1>{{page.title}}</h1>
+        </div>
+        <div class="collection-info">
+            <span class="col-item"><i class="fa fa-user"></i>China Nanjing</span>
+            <span class="col-item">
+                <i class="fa fa-tags"></i>
+                 {% for tag in page.tags %}
+                   <a>{{tag}}</a>
+                 {% endfor %}
+            </span>
+        </div>
+        <div class="article-collection-dataInfo">
+            <i class="fa fa-calendar"></i> {{ page.date | date: "%Y/%m/%d" }}
+        </div>
+    </div>
+</div>
+
+
+<div class="article-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="article-content markdown-body">
+                    {{content}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="web-comment">
+                <!--{% if page.comments %}-->
+                {% include disqus-comments.html %}
+                <!--{% endif %}-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<script id="dsq-count-scr" src="//jellybook-me.disqus.com/count.js" async></script>-->

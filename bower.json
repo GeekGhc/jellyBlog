@@ -1,0 +1,28 @@
+{
+  "name": "geekghc.github.io",
+  "description": "jellybean blog",
+  "main": "",
+  "authors": [
+    "jellybean <ghcsun@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "jellybean",
+    "blog"
+  ],
+  "homepage": "https://github.com/geekghc/geekghc.github.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "octicons": "*",
+    "primer-markdown": "*",
+    "primer-css": "~2.1.0",
+    "share.js": "overtrue-share.js#*",
+    "jquery": "~2.1.4"
+  }
+}

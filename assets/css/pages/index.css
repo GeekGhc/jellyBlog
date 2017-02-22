@@ -1,0 +1,60 @@
+.flex-page{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+#particle-canvas {
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+}
+.page-full{
+    text-align: center;
+    font-family: 'Raleway';
+    font-weight: 100;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+.flex-page .page-content{
+    position: absolute;
+    text-align: center;
+    z-index: 100;
+    margin-bottom: 15vh;
+    padding-top: 25px;
+    padding-bottom: 10px;
+}
+
+.flex-page .page-content .avatar-header{
+    margin-bottom: 30px;
+}
+.page-content .avatar-header>img{
+    width:120px;
+    height:120px;
+}
+.page-content  .description{
+    color: #fff;
+    margin: 36px 0;
+    font-size: 24px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+.page-content .links{
+    padding: 0;
+}
+.page-content .links>a{
+    cursor: pointer;
+    color: #fff;
+    padding: 0 25px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.page-content .links>a:hover{
+    color: #00adb5;
+}
+

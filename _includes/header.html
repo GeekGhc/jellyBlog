@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="/assets/css/source/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/source/semantic.min.css">
+    <link rel="stylesheet" href="/assets/css/source/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/vendor/primer-css/css/primer.css">
+    <link rel="stylesheet" href="/assets/vendor/primer-markdown/dist/user-content.min.css">
+    <link rel="stylesheet" href="/assets/vendor/share.js/dist/css/share.min.css">
+
+    <link rel="stylesheet" href="/assets/css/globals/common.css">
+    <link rel="stylesheet" href="/assets/css/articles/article.css">
+    <script src="/assets/js/source/jquery-2.1.4.min.js"></script>
+    <script src="/assets/js/source/bootstrap.min.js"></script>
+
+    <link rel="shortcut icon" href="/favicon.ico">
+</head>
+<body class="{{ page.class }}">
+<header class="site-header">
+    <div class="container">
+        <a href="/blog"><h1>Jelly Blog</h1></a>
+        <nav class="site-header-nav" role="navigation">
+            {% for nav in site.navs %}
+            <a href="{{ nav.href }}" class="site-header-nav-item" target="{{ nav.target | default: _self }}">{{nav.label}}</a>
+            {% endfor %}
+        </nav>
+    </div>
+</header>
