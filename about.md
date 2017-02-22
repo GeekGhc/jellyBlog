@@ -2,6 +2,7 @@
 layout: page
 title: 简介 | JellyBean
 class : read-me
+comments: true
 menu: About
 ---
 {% assign current_year = site.time | date: '%Y' %}
@@ -20,7 +21,7 @@ menu: About
 
 - 邮箱：ghcsun@gmail.com
 - 主页：[http://jellybook.me](http://jellybook.me)
-- 站点：[https://kobeman.com](https://www.kobeman.com)
+- 站点：[https://kobeman.com](https://kobeman.com)
 - Github：[@GeekGhc](https://gtihub.com/GeekGhc)
 - Google：[@葛华春](https://plus.google.com/u/0/108390134136813492774)
 

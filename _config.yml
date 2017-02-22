@@ -14,7 +14,7 @@ baseurl:  "/"
 domain:    jellybook.me
 permalink:    /articles/:year/:month/:title.html
 paginate_path: 'blog/page:num'
-paginate:   2
+paginate:   5
 
 source_code: https://github.com/Geekghc/geekghc.github.io
 
@@ -31,7 +31,7 @@ github_username:  GeekGhc
 # Build settings
 markdown: kramdown
 highlighter: rouge
-theme: minima
+#theme: minima
 
 kramdown:
   input: GFM
