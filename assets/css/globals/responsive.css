@@ -10,6 +10,11 @@
 }
 
 @media (max-width: 50em) {
+    .page-full {
+        width: auto;
+        max-width: 1020px;
+    }
+
     .mobile-block {
         display: block;
         float: none
