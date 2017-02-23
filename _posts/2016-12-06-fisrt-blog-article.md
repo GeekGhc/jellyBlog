@@ -8,7 +8,7 @@ tags:
      blog
 class: post-one
 comments: true
-poster: /attachments/images/articles/2017-02-12-first-blog-article/poster.png
+poster: /attachments/images/articles/2016-12-06/poster.png
 ---
 
 ## 开启jekyll之路

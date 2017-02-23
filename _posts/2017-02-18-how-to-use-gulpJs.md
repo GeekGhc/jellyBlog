@@ -8,7 +8,7 @@ tags:
      插件
 class: post-two
 comments: true
-poster: /attachments/images/articles/2017-02-24-how-to-use-gulpJs/poster.png
+poster: /attachments/images/articles/2017-02-18/poster.png
 ---
 
 ## 1.gulp安装
