@@ -26,7 +26,7 @@ poster: /attachments/images/articles/2016-12-06/poster.png
 
 官方网址[http://jekyllcn.com](http://jekyllcn.com/) 详细介绍自行查看
 
-![jekyll](/attachments/images/articles/2017-02-12-first-blog-article/start.png)
+![jekyll](/attachments/images/articles/2016-12-06/start.png)
 
 网站托管在[GithubPages](https://pages.github.com/)
 
