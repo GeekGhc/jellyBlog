@@ -229,3 +229,14 @@
 .article-collection-dataInfo i{
     margin-right: 6px;
 }
+
+
+/********************* back-to-top ************************/
+#backToTop{
+    bottom: 65px;
+    position: fixed;
+    right: 15px;
+}
+#backToTop:hover button i{
+    color: #fff;
+}
