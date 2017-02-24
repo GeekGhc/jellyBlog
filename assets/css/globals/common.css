@@ -396,9 +396,22 @@
 }
 
 .markdown-body blockquote {
-    padding: 0 15px;
-    color: #777;
-    border-left: 4px solid #ddd
+   /* padding: 4px 15px;
+    font-size: inherit;
+    color: #7F8C8D;
+    border-left: 4px solid #ecf0f1;
+    margin: 20px 0!important;
+    background-color: rgba(102,128,153,.03);*/
+
+    font-size: inherit;
+    border: 0;
+    background: #e7edf3;
+    color: #667d99;
+    border-radius: 4px;
+    padding: 8px 15px;
+    border-top: 2px dotted #fff;
+    border-bottom: 2px dotted #fff;
+    margin: 1em 0;
 }
 
 .markdown-body blockquote > :first-child {

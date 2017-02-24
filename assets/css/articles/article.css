@@ -233,6 +233,7 @@
 
 /********************* back-to-top ************************/
 #backToTop{
+    z-index: 99;
     bottom: 65px;
     position: fixed;
     right: 15px;
