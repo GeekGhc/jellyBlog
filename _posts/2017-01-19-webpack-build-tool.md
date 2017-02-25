@@ -173,3 +173,134 @@ import $ from 'jquery'
 //如果你要引入Vue的话
 import Vue from 'vue';
 ```
+## 3.webpack 进行Vue的组件化开发
+1.下载相关的package
+```
+$ npm install vue vue-loader vue-html-loader vue-style-loader --save-dev
+```
+安装完毕后 我们去配置我们的`loader`(这在之前已经给出了)
+```php?start_inline=1
+{
+    test:/\.vue$/,
+    loader:"vue",
+}
+```
+
+2.创建我们的vue组件
+在根目录的js/components文件夹下创建h`heading.vue` 具体内容:
+```php?start_inline=1
+<template>
+    <div>
+        {{ message }}
+    </div>
+</template>
+
+<script>
+    export default{
+        data(){
+            return{
+                message:'hello vueJs'
+            }
+        },
+    }
+</script>
+```
+写完后我们还需要在之前的入口文件`entry.js`里包含进来这个`vue`组件
+```php?start_inline=1
+import Heading from "./components/heading.vue"
+
+//初始化一个vue 需要在视图文件里指定我们的app
+new Vue({
+    el:'#app',
+    components:{Heading}
+    /*
+       * 当然我们也可以在初始化之前这样注册
+       * Vue.component('Heading',require('./components/heading.vue'))
+       */
+})
+```
+
+这时在视图里我们就可以指定我们的组件了:
+```php?start_inline=1
+<div id="app">
+    <Heading></Heading>
+</div>
+```
+命令行再次执行
+```
+$ webpack
+```
+当然我们的`vue`由于是通过`npm`安装的 我们他会给出一个错误就是`Failed to mount component`
+如果我们需要使用常规模式 这需要我们通过一个script标签进行引入或者添加一个[配置](https://vuejs.org/v2/guide/installation.html#Standalone-vs-Runtime-only-Build)
+```php?start_inline=1
+resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.js'
+        }
+},
+```
+再去执行`webpack`就可以看到**hello vueJs**了 说明我们成功引入了`vue`组件
+
+## 4.webpack hot reload(热加载)
+1.webpack 有用的flag
+- `webpack --display-modules`: 你可以看到各个`modules`的情况
+- `webpack --display-modules --display-reasons`: 除此之外我们还可以清楚看出每个`module`的包含情况
+-  `webpack -p`: 这会对打包的文件进行优化和压缩 特别的这对我们线上部署是很有用的
+- `webpack -w`(webpack --watch): 这会执行一个watch的状态 不用我们每次修改文件之后再回来执行`webpack` 这和`gulp watch`是一个道理
+
+2.`webpack`在`watch`机制上引进了`hot reload`机制
+
+在引入hot reload 机制后我们不仅不需要再次执行`webpack` 每次修改文件后也不用刷新我们的浏览器
+这对每个开发人员来说肯定是非常好的事情
+
+开始安装:
+```
+$ npm install webpack-dev-server -g
+```
+安装完毕之后理论上我们就可以使用了:
+这时候我们并不是去执行`webpack` 而是去命令行执行:
+```
+$ webpack-dev-server --inline --hot
+```
+`webpack-dev-server`会启动一个**web服务器** 默认端口是**8080**而`--hot`则是代表我们去执行一个热加载
+
+> 如果没有启动成功 你需要考虑下有没有其他程序占用这个**8080**端口 这个就和我们最常见的**80**端口被占用是一样的
+
+在这之后如果你去修改你的诸如`js文件` `css文件` `vue文件`  那么浏览器会同时执行了修改 这真的是件非常cool的事情
+
+## 5.webpack 插件配置
+1.针对线上还是线下环境的处理
+
+和很多框架一样(如我们的`laravel`框架 会在`.env`读取对是否是线上还是线下的变量)在开发和上线是两种不同的工作环境
+而在`webpack`里面是根据`env.NODE_ENV`进行判断的 这里会有`production`和`local`两个选择
+
+我们可以这样获取(这就和我们框架中`debug`模式是否开启是一样的)
+```php?start_inline=1
+var debug = process.env.NODE_ENV !== "production";
+```
+有了我们的debug变量我们就可以获取到是否是线下环境 然后在我们的`webpack.config.json`可以这样写：
+```php?start_inline=1
+module.exports = {
+devtool: debug?"sourcemap":null,
+...
+}
+```
+这个就是如果是线下环境我们就生成一个`sourcemap`如果是线上环境就不需要
+
+2.**plugins**(插件)配置
+我们在配置我们的插件的时候我们就需要把我们的插件放到我们的`webpack.config.json`一个`plugins`声明当中：
+```php?start_inline=1
+module.exports = {
+devtool: debug?"sourcemap":null,
+...
+//这些是你需要一些plugins
+plugins:debug ? [] : [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    ...
+]
+}
+```
+这里是`webpack`的插件说明和相应的配置[https://github.com/webpack/docs/wiki/list-of-plugins](https://github.com/webpack/docs/wiki/list-of-plugins)
+
+你可以去了解去使用你需要的`plugins`
