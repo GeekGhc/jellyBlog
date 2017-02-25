@@ -304,3 +304,14 @@ plugins:debug ? [] : [
 这里是`webpack`的插件说明和相应的配置[https://github.com/webpack/docs/wiki/list-of-plugins](https://github.com/webpack/docs/wiki/list-of-plugins)
 
 你可以去了解去使用你需要的`plugins`
+
+下面提供一个`webpack`官方提供的`analyse`功能 [http://webpack.github.io/analyse/](http://webpack.github.io/analyse/)
+
+> 他会根据你的js文件分析你的项目的package和文件之间的关系
+
+这会需要我们上传一个json文件 我们可以在项目中去生成这个json文件:
+```
+$ webpack --profile --json > status.json
+```
+这会将我们`webpack`整个`profile`生成一个`status.json`
+到时我们上传这个`status.json`文件就可以分析我们整个项目的结构了 :bowtie:
