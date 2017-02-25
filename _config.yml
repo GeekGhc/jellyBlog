@@ -12,7 +12,7 @@ encoding: "utf-8"
 url: http://jellybook.me
 baseurl:  "/"
 domain:    jellybook.me
-permalink:    /articles/:year/:month/:title.html
+permalink:    /articles/:year/:month/:title
 paginate_path: 'blog/page:num'
 paginate:   5
 
