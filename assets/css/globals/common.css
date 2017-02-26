@@ -1,3 +1,6 @@
+body{
+    background: #f9f9fb;
+}
 .site-header, .site-header-actions .select-menu {
     position: relative
 }

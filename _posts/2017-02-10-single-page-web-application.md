@@ -7,7 +7,7 @@ tags:
      vueJs
      vuex
      Laravel
-class: post-one
+class: post-six
 comments: true
 poster: /attachments/images/articles/2017-02-10/poster.png
 ---
