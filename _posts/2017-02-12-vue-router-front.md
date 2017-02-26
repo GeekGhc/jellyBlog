@@ -81,7 +81,7 @@ Route::get('/todos',function(){
 > 我们可以这么理解: 当访问到一个路由时 那么这个`router-view`就会去访问到我们指向的`component`
  这个`router-view`就是填充我们需要展示的`component`的
  就比如访问到首页时就展示的是`Todos`这个`component`的内容 
- 当访问到**http://8000/todo/2** 就会展示id为**2**的`Todo`的内容
+ 当访问到**http://localhost:8000/todo/2** 就会展示id为**2**的`Todo`的内容
 
 因为我们需要渲染我们后端传过来的数据 我们需要将我们的数据传入:
 ```php?start?inline=1
