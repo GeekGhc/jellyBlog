@@ -19,7 +19,7 @@ poster: /attachments/images/articles/2017-02-10/poster.png
 
 ## 1.集成`UEditor`
 1.其实有很多这样的文本编辑器 例如我找到的两款:
-- [UEditor](http://ueditor.baidu.com/website/index.html)
+- [UEditor](http://ueditor.baidu.com/website/index.html) 也就是我准备引入的富文本编辑器
 - [Quill](https://quilljs.com/)  个人感觉还是比较好看的 :stuck_out_tongue_closed_eyes:
 
 
@@ -27,6 +27,8 @@ poster: /attachments/images/articles/2017-02-10/poster.png
 
 当然后面的话我还是想再去集成其他的文本编辑器 尽管这款编辑器功能还是很强大的 但是我发现我并没有这么多的需求 顺便也多一种体验嘛
 (功能和样式选项都是可以配置的 在下面我也会给出我的一些配置项)
+
+[官方配置文档](http://fex.baidu.com/ueditor/#start-config)
 
 2.开始集成`UEditor`
 
@@ -75,3 +77,19 @@ poster: /attachments/images/articles/2017-02-10/poster.png
 最后可以在页面看到成功显示:
 
 ![first](/attachments/images/articles/2017-02-10/first.png)
+
+> 如果显示加载文件路径问题 基本上是`UEDITOR_HOME_URL`路径的配置出错了
+
+3.配置富文本编辑器
+先去配置下前端的内容(后端的话主要涉及到图片的上传等)
+
+这里我集成了`JellyBool`在`github`上的一个`Package` [https://github.com/JellyBool/simple-ueditor](https://github.com/JellyBool/simple-ueditor)
+
+> 对样式图标进行了一定的优化(你可以直接拿过来替换你的`ueditor`文件目录就行 当然还是要去配置一下前面提到的文件路径)
+
+最后的效果大概是这样的(这里以集成到我的项目里为例)
+
+![second](/attachments/images/articles/2017-02-10/second.png)
+
+> 我个人在学习`Laravel`时就是在`JellyBool`这位大神的站点[Laravist](https://www.laravist.com/)学习的 给了我很大的触动也学习到了不少的知识和想法
+真的觉得对于技术和学习是一件你只要愿意花时间花精力 你就会体会到你想要的充实感和快乐  **Fighting!!!** :laughing:
