@@ -8,7 +8,7 @@ tags:
      脚手架工具
 class: post-three
 comments: true
-poster: /attachments/images/articles/2017-02-04/poster.png
+poster: /attachments/images/articles/2016-11-04/poster.png
 ---
 
 ## 1.vue-cli安装

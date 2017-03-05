@@ -8,7 +8,7 @@ tags:
      vueJs
 class: post-four
 comments: true
-poster: /attachments/images/articles/2017-01-19/poster.png
+poster: /attachments/images/articles/2016-10-28/poster.png
 ---
 
 ## 1.webpack安装

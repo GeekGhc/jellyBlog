@@ -8,7 +8,7 @@ tags:
      state
 class: post-two
 comments: true
-poster: /attachments/images/articles/2017-02-15/poster.png
+poster: /attachments/images/articles/2017-01-15/poster.png
 ---
 
 ## 1.安装vuex

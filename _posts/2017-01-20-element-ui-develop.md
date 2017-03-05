@@ -8,7 +8,7 @@ tags:
      Components
 class: post-three
 comments: true
-poster: /attachments/images/articles/2017-02-20/poster.png
+poster: /attachments/images/articles/2017-01-20/poster.png
 ---
 
 ## 介绍

@@ -8,7 +8,7 @@ tags:
      router
 class: post-one
 comments: true
-poster: /attachments/images/articles/2017-02-12/poster.png
+poster: /attachments/images/articles/2017-01-12/poster.png
 ---
 
 ## 1.介绍

@@ -8,7 +8,7 @@ tags:
      Laravel
 class: post-five
 comments: true
-poster: /attachments/images/articles/2017-02-07/poster.png
+poster: /attachments/images/articles/2016-12-07/poster.png
 ---
 
 ## 1.后端提供**API**
