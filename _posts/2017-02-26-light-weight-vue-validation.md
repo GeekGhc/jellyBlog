@@ -152,6 +152,25 @@ validations: {
 > 在这里的验证规则流程是这样的 如果`$error`为`true`那么`form-group`会添加一个`form-group--error`这个`class`
 > 只有在`$error`为`true`时 如果你不符合任意一个验证规则 例如不符合`required` 那么就会提示验证失败
 
+如果验证错误就给出错误提示 这是我的错误样式:
+```css
+.form-group__message{
+    display: none;
+    font-size: .95rem;
+    color: #CC3333;
+    margin-left: 10em;
+    margin-bottom: 12px;
+}
+.form-group--error+.form-group__message {
+    display: block;
+    color: #CC3333;
+}
+
+.form-group--error input, .form-group--error input:focus, .form-group--error input:hover, .form-group--error textarea {
+    border-color: #CC3333;
+}
+```
+
 2.密码验证其实和上面的差不多 只不过他的验证规则时通过 `sameAs` 来进行验证的
 
 除了上面这些还有一个组合验证 也就是如果任意一个不符合验证规则就不通过 这个还是挺常用的
@@ -175,6 +194,24 @@ validations: {
 特别是在验证唯一性的时候 我们肯定会遇到这样的一个场景:
 
 就比如我们的邮箱 如果已经注册过这个邮箱了 那么再用这个邮箱去注册显然不是我们想要的
+
+还有就是我们登录时我们需要去核对我们的用户的密码
+
+
+4.自定义验证
+
+同样的我们不仅可以使用它提供给我们的验证规则 我们也可以自定义验证规则并与之前的进行组合
+
+官方给出了一个简单实例:
+```php?start_inline=1
+export default value => {
+  if (Array.isArray(value)) return !!value.length
+
+  return value === undefined || value === null
+    ? false
+    : !!String(value).length
+}
+```
 #### 相关网址
 - [github地址](https://github.com/monterail/vuelidate)
 - [package官网](https://monterail.github.io/vuelidate/)
