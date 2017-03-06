@@ -197,6 +197,41 @@ validations: {
 
 还有就是我们登录时我们需要去核对我们的用户的密码
 
+这边我给出的实例就是对于用户名的注册 如果已经注册了就会提示已经注册过
+
+> 完全支持`async/await`语法。它与`Fetch API`结合使用也很出色 那么我们可以通过后端API提供的结果可以进行判断
+
+我们可以去增加我们唯一性的验证:
+```php?start_inline=1
+name: {
+    required,
+    minLength: minLength(4),
+    async isUnique (value) {
+       if (value === '') return true
+       const response = await fetch(`http://localhost:8000/api/unique/name/${value}`)
+       return Boolean(await response.json())
+    }
+},
+```
+这里我现在本地测试 通过`Laravel`作为后端来提供的数据校验 实际项目中的话可以再结合数据库
+```php?start_inline=1
+//用户验证路由
+Route::group(['prefix'=>'unique','middleware'=>['api','cors']], function () {
+    Route::get('/name/{value}',function(Request $request,$value){
+        if($value==="gavin"){
+            return response()->json(false);
+        }
+        return response()->json(true);
+    });
+});
+```
+如果我们去注册 **gavin**这个用户就会提示该昵称已经被注册 因为在用户名我增加了`isUnique`验证
+```php?start_inline=1
+<span class="form-group__message" v-if="!$v.newUser.name.isUnique">用户名已经被注册</span>
+```
+
+显示结果应该是这样的:
+![first](/attachments/images/articles/2017-02-26/first.png)
 
 4.自定义验证
 
@@ -212,6 +247,7 @@ export default value => {
     : !!String(value).length
 }
 ```
+
 #### 相关网址
 - [github地址](https://github.com/monterail/vuelidate)
 - [package官网](https://monterail.github.io/vuelidate/)
