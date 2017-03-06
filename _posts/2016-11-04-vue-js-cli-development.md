@@ -60,14 +60,14 @@ $ npm run dev
 > 如果你在npm install下载的时候发生错误 大都需要你升级nodejs和npm到最新的版本 之前我们也提到过就是在官方给出就是对版本也有一定要求
 
 执行完`npm run dev`会启动一个服务器 并运行在我们的8080端口:
-![one](/attachments/images/articles/2017-02-04/one.png)
+![one](/attachments/images/articles/2016-11-04/one.png)
 
 用`phpstrom`打开我们的项目 可以看到我们的文件目录(而我们最需要关注的就是我们的`src`目录)
 
 ## 2.vue-cli 项目结构
 1.**src**目录是我们的组件存放等文件的目录
 
-![two](/attachments/images/articles/2017-02-04/two.png)
+![two](/attachments/images/articles/2016-11-04/two.png)
 在`main.js`里定义了我们`vueJs`的一个实例:
 ```php?start_inline=1
 import Vue from 'vue'

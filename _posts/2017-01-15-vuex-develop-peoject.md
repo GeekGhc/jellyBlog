@@ -26,7 +26,7 @@ Vue.use(Vuex)
 
 ## 2.处理业务
 1.其实最主要的我们是去理解官方所示的流程图
-![流程图](/attachments/images/articles/2017-02-15/poster.png)
+![流程图](/attachments/images/articles/2017-01-15/poster.png)
 
 我们可以先从提供的`demo`开始:
 
