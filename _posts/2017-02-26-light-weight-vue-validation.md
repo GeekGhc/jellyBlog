@@ -235,7 +235,7 @@ Route::group(['prefix'=>'unique','middleware'=>['api','cors']], function () {
 ```
 
 显示结果应该是这样的:
-![first](/attachments/images/articles/2017-02-26/first.png)
+![first](/attachments/images/articles/2017-02-26/first.gif)
 
 #### 5.自定义验证
 
