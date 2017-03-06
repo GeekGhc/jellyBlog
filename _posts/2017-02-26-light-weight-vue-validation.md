@@ -49,7 +49,7 @@ const { required, minLength } = require('vuelidate/lib/validators')
 其实使用起来真的很方便 下面举例来说就是在我的项目里的使用
 
 
-1.注册验证
+#### 1.注册验证
 在用户注册时 我们通常的需要处理的表单字段就是`name`,`email`,`password`,`confirm_pwd`
 
 首先我在`Register.vue`这个组件文件中把基本的样式结构写好 这取决于每个人
@@ -171,7 +171,11 @@ validations: {
 }
 ```
 
-2.密码验证其实和上面的差不多 只不过他的验证规则时通过 `sameAs` 来进行验证的
+#### 2.密码验证
+
+密码验证其实和上面的差不多 只不过他的验证规则时通过 `sameAs` 来进行验证的
+
+#### 3.组合验证
 
 除了上面这些还有一个组合验证 也就是如果任意一个不符合验证规则就不通过 这个还是挺常用的
 
@@ -189,7 +193,7 @@ validations: {
 如果任意一个就是`FlatA flatB forGroup`其中一个不符合验证规则 那么`$v.validationGroup.$error`就是`false`
 
 
-3.异步验证
+#### 4.异步验证
 
 特别是在验证唯一性的时候 我们肯定会遇到这样的一个场景:
 
@@ -233,7 +237,7 @@ Route::group(['prefix'=>'unique','middleware'=>['api','cors']], function () {
 显示结果应该是这样的:
 ![first](/attachments/images/articles/2017-02-26/first.png)
 
-4.自定义验证
+#### 5.自定义验证
 
 同样的我们不仅可以使用它提供给我们的验证规则 我们也可以自定义验证规则并与之前的进行组合
 
