@@ -98,7 +98,10 @@ const store = new Vuex.Store({
 还有要说明的就是前后端数据肯定是统一的 那么在`vuex`里 后端数据的操作就是通过`action`去实现的  而前端的数据就是通过`mutation`去改变`state`里面的
 数据 这样前后端就统一起来了
 
-而`state`里面的数据是每个组件都可以访问 这和我们通常的全局变量的功能差不多
+而`state`里面的数据是每个组件都可以访问 这和我们通常的全局变量的功能差不多 当我们的项目越来越大的时候 我们的`store`也会变得十分臃肿
+
+维护起来也十分困难 那么我们可以将`store`分成几个`module` 每个`module`有相当于一个`store` 因为它有自身的
+`state`、`mutation`、`action`、`getters`
 
 举个例子来说就是 
 
@@ -138,6 +141,7 @@ state: {
 ```
 `state`的`todos`的内容改变后就会去渲染我们的`Vue Components`
 我们就可以看到页面的数据信息发生改变 这样也就完成用户和数据的交互过程
+
 
 参考资料:
 - [http://vuex.vuejs.org/en/](http://vuex.vuejs.org/en/)
