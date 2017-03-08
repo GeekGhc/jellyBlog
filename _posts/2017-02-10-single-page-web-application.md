@@ -20,7 +20,7 @@ poster: /attachments/images/articles/2017-02-10/poster.png
 ## 1.集成`UEditor`
 1.其实有很多这样的文本编辑器 例如我找到的两款:
 - [UEditor](http://ueditor.baidu.com/website/index.html) 也就是我准备引入的富文本编辑器
-- [Quill](https://quilljs.com/)  个人感觉还是比较好看的 :stuck_out_tongue_closed_eyes:
+- [Quill](https://quilljs.com/)  个人感觉还是比较好看的会在之后的项目里使用的吧 :stuck_out_tongue_closed_eyes:
 
 
 但我发现好像还是百度的`UEditor`用的比较多点 其实自己也想到就是文档资料找起来比较方便 这样处理问题也很快
@@ -93,3 +93,7 @@ poster: /attachments/images/articles/2017-02-10/poster.png
 
 > 我个人在学习`Laravel`时就是在`JellyBool`这位大神的站点[Laravist](https://www.laravist.com/)学习的 给了我很大的触动也学习到了不少的知识和想法
 真的觉得对于技术和学习是一件你只要愿意花时间花精力 你就会体会到你想要的充实感和快乐  **Fighting!!!** :laughing:
+
+接下来即使最基本的登录注册过程 这个在之后我会给出了解决方案
+
+- [登录注册](http://jellybook.me/articles/2017/02/light-weight-vue-validation)
