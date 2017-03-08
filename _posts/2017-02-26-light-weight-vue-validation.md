@@ -116,25 +116,8 @@ validations: {
 <span class="form-group__message" v-if="!$v.newUser.email.email">请填写正确的邮箱格式</span>
 ```
 
-每个人可以都不一样 官方文档上也给出了`demo`:
-```html
-<div>
-  <div class="form-group" v-bind:class="{ 'form-group--error': $v.flatA.$error }">
-    <label class="form__label">Flat A</label>
-    <input class="form__input" v-model.trim="flatA" @input="$v.flatA.$touch()">
-  </div><span class="form-group__message" v-if="!$v.flatA.required">Field is required.</span>
-  <div class="form-group" v-bind:class="{ 'form-group--error': $v.flatB.$error }">
-    <label class="form__label">Flat B</label>
-    <input class="form__input" v-model.trim="flatB" @input="$v.flatB.$touch()">
-  </div><span class="form-group__message" v-if="!$v.flatB.required">Field is required.</span>
-  <div class="form-group" v-bind:class="{ 'form-group--error': $v.forGroup.nested.$error }">
-    <label class="form__label">Nested field</label>
-    <input class="form__input" v-model.trim="forGroup.nested" @input="$v.forGroup.nested.$touch()">
-  </div><span class="form-group__message" v-if="!$v.forGroup.nested.required">Field is required.</span>
-  <div class="form-group" v-bind:class="{ 'form-group--error': $v.validationGroup.$error }"></div><span class="form-group__message" v-if="$v.validationGroup.$error">Group is invalid.</span>
-  <pre>validationGroup: {{ $v.validationGroup }}</pre>
-</div>
-```
+每个人可以都不一样 官方文档上也给出了`demo`
+
 我们先这样举例 值得注意的是我们需要去知道他的`$v.name`里面的内容
 
 也就是 `$invalid` `$dirty` `$error` `$pending` `$each` 这个`value`
