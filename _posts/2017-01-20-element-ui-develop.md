@@ -67,8 +67,11 @@ $ npm install babel-plugin-component -D
 
 这里的UI框架诸如我们经常用到的`BootStrap`以及`SemanticUI`之类的
 
+使用的话关注一些表单验证 组合的属性使用 布局 其余和我们结合文档还是很容易使用的
 
-举个例子来说的话
+## 其他的组件UI推荐
+- MuseUI-[https://museui.github.io/#/index](https://museui.github.io/#/index)
+- IView-[https://www.iviewui.com/](https://www.iviewui.com/)
 
 ##### 相关材料链接
 - [element组件网址](http://element.eleme.io/#/zh-CN/component/installation)

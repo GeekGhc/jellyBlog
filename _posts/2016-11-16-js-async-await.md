@@ -9,7 +9,7 @@ tags:
      await
 class: post-two
 comments: true
-poster: /attachments/images/articles/2017-03-02/poster.jpg
+poster: /attachments/images/articles/2016-11-16/poster.jpg
 ---
 ## 介绍
 无论是在 `Web` 前端界面，还是 `Node.js` 服务端都是如此，`JavaScript` 里面处理异步调用一直是非常令人头疼的一件事情。
