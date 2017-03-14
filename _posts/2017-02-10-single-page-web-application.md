@@ -97,4 +97,6 @@ poster: /attachments/images/articles/2017-02-10/poster.png
 
 接下来即使最基本的登录注册过程 这个在之后我会给出了解决方案
 
+> 项目总是一步一步来进行 期间肯定会遇到各种的坑 但肯定也会学习到很多 这篇也算是开个好头吧
+
 - [登录注册](http://jellybook.me/articles/2017/02/light-weight-vue-validation)

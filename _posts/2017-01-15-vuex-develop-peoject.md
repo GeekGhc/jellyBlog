@@ -123,7 +123,7 @@ getTodos(store){
 },
 ```
 
-`getTodos`去从后端拿到了所有的任务数据 然后它commit了一个`get_todos_list`的`mutation`:
+`getTodos`去从后端拿到了所有的任务数据 然后它`commit`了一个`get_todos_list`的`mutation`:
 ```php?start_inline=1
 get_todos_list (state,todos) {
       state.todos = todos
@@ -142,6 +142,12 @@ state: {
 `state`的`todos`的内容改变后就会去渲染我们的`Vue Components`
 我们就可以看到页面的数据信息发生改变 这样也就完成用户和数据的交互过程
 
+对于`vuex`的使用 最好还是官方推荐的架构形式
+
+以我的一个项目为例来说吧 就是将各个工作模块区分开来
+![first](/attachments/images/articles/2017-01-15/first.png)
+
+我们可以直接去引用我们`index.js`作为入口 具体的怎么实现 我可能需要重新在一篇文章中去写到
 
 参考资料:
 - [http://vuex.vuejs.org/en/](http://vuex.vuejs.org/en/)

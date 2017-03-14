@@ -14,7 +14,7 @@ poster: /attachments/images/articles/2017-03-03/poster.png
 
 > 具体的editor组件代码我已经放在我的`gist`
 
-## 集成`Quill-editor`
+## 集成**Quill-editor**
 
 1.集成`quill`
 
@@ -83,3 +83,4 @@ onEditorChange({ editor, html, text }) {
 #### 部分资料
 - [gist地址](https://gist.github.com/GeekGhc/152d677e6e512513e9e671b2a271da31)
 - [Api文档](https://quilljs.com/docs/quickstart/)
+- [Web前端开发资源库](https://www.awesomes.cn/)
