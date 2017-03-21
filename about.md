@@ -19,6 +19,7 @@ menu: About
 
 ## 联系
 
+- QQ: 2438462863
 - 邮箱：ghcsun@gmail.com
 - 主页：[http://jellybook.me](http://jellybook.me)
 - 站点：[https://kobeman.com](https://kobeman.com)
