@@ -12,7 +12,7 @@ poster: /attachments/images/articles/2017-01-20/poster.png
 ---
 
 ## 介绍
-寒假期间正在学习用脚手架来进行`vue`的**组件化开发** 之前的话因为是期初阶段 每一个组件用起来就感觉把一个个的盒子去拆分 
+寒假期间正在学习用脚手架来进行`vue`的**组件化开发** 之前的话因为是期初阶段 每一个组件用起来就感觉把一个个的盒子去拆分
 
 特别是在打包时多多少少会有一些尴尬的事情 在接触也就是我要介绍的[element](http://element.eleme.io/#/zh-CN/component/installation)组件解决方案后这个项目进行起来就很舒服了
 
@@ -72,7 +72,7 @@ $ npm install babel-plugin-component -D
 ## 其他的组件UI推荐
 - MuseUI-[https://museui.github.io/#/index](https://museui.github.io/#/index)
 - IView-[https://www.iviewui.com/](https://www.iviewui.com/)
+- Mint Ui(移动端)-[http://mint-ui.github.io/#!/en](http://mint-ui.github.io/#!/en)
 
 ##### 相关材料链接
 - [element组件网址](http://element.eleme.io/#/zh-CN/component/installation)
-    

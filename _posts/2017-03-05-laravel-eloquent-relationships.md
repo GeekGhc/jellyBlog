@@ -100,6 +100,10 @@ Schema::create('posts', function (Blueprint $table) {
 
 ![first](/attachments/images/articles/2017-03-05/first.png)
 
+> 这里是`windows`环境下 所以我用的还是**Navicat Premium** 管理数据库 因为支持多种数据库 用起来还是相当方便的
+>
+> 如果是`Mac`环境下的话 **Sequel Pro** 肯定是一个非常好的选择
+
 接着去项目终端执行:
 ```shell
 $ php artisan tinerk
