@@ -13,7 +13,7 @@ menu: About
 
 对于`VueJs`这样的界面框架有着开发经验,对现代化的 `PHP` 开发比较感兴趣，
 
-对 `MySQL`，`Redis`，`Mongodb` 等数据库有所了解应用，前端方面熟悉 `jQuery`, `CSS` 等基础。  
+对 `MySQL`，`Redis`，`Mongodb` 等数据库有所了解应用，前端方面熟悉 `jQuery`, `CSS` 等基础。对构建工具`gulp` `webpack`有过项目经验
 
 掌握 `Linux` 下的常用操作，对 `Nginx` 配置有所经验，注重流程规范，追求代码的整洁和可维护性。
 
