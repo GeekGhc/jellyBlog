@@ -2,6 +2,7 @@
     display: flex;
     position: relative;
     align-items: center;
+    justify-content: center;
 }
 
 #particle-canvas {
@@ -23,6 +24,10 @@
     margin-bottom: 15vh;
     padding-top: 25px;
     padding-bottom: 10px;
+}
+
+.flex-page .page-content .description{
+  text-align: center;
 }
 
 .flex-page .page-content .avatar-header{
