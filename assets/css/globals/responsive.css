@@ -11,8 +11,8 @@
 
 @media (max-width: 50em) {
     .page-full {
-        width: auto;
-        max-width: 1020px;
+        width: 100vh;
+        height: 100vh;
     }
 
     .mobile-block {
@@ -90,6 +90,9 @@
     .articles-page-content .media .media-left{
         /*display: none;*/
         width: 100%;
+    }
+    .articles-page-content .media .media-body{
+       width: 100%;
     }
     .collection-header{
         padding-top: 0px !important;
