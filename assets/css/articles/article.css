@@ -119,18 +119,21 @@
 }
 
 .articles-page-content .media .media-left {
-    width: 260px;
-    height: 180px;
+    padding-left: 12px;
 }
 
 .articles-page-content .media .media-left img {
     border-radius: 5px;
-    /*width: 100%;
-    height: 100%;*/
+    height:180px;
+    width:260px;
 }
 
 .media-body .media-heading a {
     cursor: pointer;
+}
+
+.articles-page-content .media .media-body{
+  padding-left: 12px;
 }
 
 .articles-page-content .media .media-body .description {

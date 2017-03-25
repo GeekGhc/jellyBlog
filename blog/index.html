@@ -28,9 +28,9 @@ menu: Blog
                 {% for post in paginator.posts %}
                 <div class="media">
                     <a class="media-left">
-                        <img height="180px" width="260px" src="{{post.poster}}">
+                        <img src="{{post.poster}}">
                     </a>
-                    <div class="media-body" style="padding-left: 12px">
+                    <div class="media-body">
                         <h2 class="media-heading">
                             <a href="{{ post.url }}">{{post.title}}</a>
                         </h2>
