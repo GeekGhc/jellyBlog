@@ -2,7 +2,6 @@
     display: flex;
     position: relative;
     align-items: center;
-    justify-content: center;
 }
 
 #particle-canvas {
@@ -19,7 +18,6 @@
     overflow: hidden;
 }
 .flex-page .page-content{
-    position: absolute;
     text-align: center;
     z-index: 100;
     margin-bottom: 15vh;
@@ -57,4 +55,3 @@
 .page-content .links>a:hover{
     color: #00adb5;
 }
-
