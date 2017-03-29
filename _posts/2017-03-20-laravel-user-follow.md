@@ -81,9 +81,11 @@ Route::post('user/follow','FollowersController@follow');
 $follow = $user->followThisUser($userId)
 ```
 
-> 这个方法是他会返回一个数组对象 如果是执行`attach`方法的话 那么`$follow['attached']`是`$userId`的值
+> 这个方法是他会返回一个数组对象 如果是执行`attach`方法的话 
+>
+>那么`$follow['attached']`是`$userId`的值
 > 
-> 如果这样的话我们就可以知道`followThis`这个方法到底是执行了attach还是detach方法了 
+> 如果这样的话我们就可以知道`followThis`这个方法到底是执行了`attach`还是`detach`方法了 
 > 那么接着我们就可以去增加一个用户的粉丝数这样的操作了
 
 所以你可以在执行完成之后的逻辑是这样的
