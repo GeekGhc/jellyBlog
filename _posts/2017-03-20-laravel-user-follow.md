@@ -99,12 +99,12 @@ if(count($followed['attached'])>0){
 ```
 当然如果我们需要拿到一个用户的关注的人和粉丝的话 可以去执行
 ```php?start_inline=1
-$user->followers 
+$user->following 
 ```
 以及
 ```php?start_inline=1
-$user->following
+$user->followers    
 ```
 这样的话我们就可以拿到对应的用户数据信息了
 
-> 其实整个实现起来就和我们对一篇帖子进行点赞一样 只不过对象变成了用户和一篇帖子
+> 其实整个实现起来就和我们对一篇帖子进行点赞一样 只不过对象变成了用户与用户之间
