@@ -76,8 +76,25 @@ Route::post('user/follow','FollowersController@follow');
 
 如果用户去关注另一个用户的话 只需要去执行`follow`方法 而这个方法也是一个`toggle`式的操作
 
-> 其实整个实现起来就和我们对一篇帖子进行点赞一样 只不过对象变成了用户和一篇帖子
+当然我们在执行
+```php
+$follow = $user->followThisUser($userId)
+```
 
+> 这个方法是他会返回一个数组对象 如果是执行`attach`方法的话 那么`$follow['attached']`是`$userId`的值
+> 
+> 如果这样的话我们就可以知道`followThis`这个方法到底是执行了attach还是detach方法了 
+> 那么接着我们就可以去增加一个用户的粉丝数这样的操作了
+
+所以你可以在执行完成之后的逻辑是这样的
+```php?start_inline=1
+$follow = user()->followThisUser($userId);
+//如果用户关注了另一个用户
+if(count($followed['attached'])>0){
+    //可以去通知用户 修改用户的关注人数等数据
+    return response()->json(['followed' => true]);
+}
+```
 当然如果我们需要拿到一个用户的关注的人和粉丝的话 可以去执行
 ```php?start_inline=1
 $user->followers 
@@ -87,3 +104,5 @@ $user->followers
 $user->following
 ```
 这样的话我们就可以拿到对应的用户数据信息了
+
+> 其实整个实现起来就和我们对一篇帖子进行点赞一样 只不过对象变成了用户和一篇帖子
