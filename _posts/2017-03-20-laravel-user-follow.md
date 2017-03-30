@@ -107,4 +107,30 @@ $user->followers
 ```
 这样的话我们就可以拿到对应的用户数据信息了
 
+那么我们定义完用户关注其他用户的操作 那么我们之后也可以去获取一个用户是否关注了这个用户 这个只需要返回一个`bool`值
+
+我们接着去定义一下路由
+```php?start_inline=1
+Route::get('/{userId}/follow/{followedId}','FollowController@isFollow');//用户是否关注
+```
+然后去写一下对应的方法逻辑
+```php?start_inline=1
+//用户是否关注
+public function isFollow($userId,$followedId)
+{
+    $followedUser = User::find($followedId);
+    $followers = $followedUser->followers()->pluck('follower_id')->toArray();
+    if(in_array($userId,$followers)){
+        return response()->json(true);
+    }
+    return response()->json(false);
+}
+```
+
+主要就是判断字段的`follower_id`是否存在我们当前的用户`id`并且对应的是我们所给的目标用户的`id`
+
+返回值拿到后我们就可以在视图去判断 一个用户是否已经关注了这个用户 
+
+其实最好我们把关注用户这个过程放在一个组件里 这样可重用性也会更好
+
 > 其实整个实现起来就和我们对一篇帖子进行点赞一样 只不过对象变成了用户与用户之间
