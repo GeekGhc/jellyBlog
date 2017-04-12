@@ -151,12 +151,12 @@ public function register($data)
 
 2.调用其他命令
 其实这个实现起来也很容易 也就是去调用`call`这个方法
-```php
+```php?start_inline=1
 public function handle()
 {
      $this->call('key:generate');
      $this->call('migrate');
-     $this->info('数据表创建爱成功');
+     $this->info('数据表创建成功');
 }
 ```
 

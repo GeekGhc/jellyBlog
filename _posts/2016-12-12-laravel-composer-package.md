@@ -9,7 +9,7 @@ tags:
      Package
 class: post-six
 comments: true
-poster: /attachments/images/articles/2016-12-07/poster.png
+poster: /attachments/images/articles/2016-12-12/poster.png
 ---
 
 ## 参考资料
