@@ -88,6 +88,7 @@ class Flash extends Facade
 
 最后的目录结构是这样的
 
+```php?start_inline=1
 |
 |—— packages 
 | |—— geekghc
@@ -109,6 +110,7 @@ class Flash extends Facade
 |     |—— composer.lock    
 |     |—— phpunit.xml  
 |     |—— readme.md
+```
 
 
 这样的话 我们就在本地写好了扩展包  我们其实可以去创建一个控制器去测试我们这个包是否正常
