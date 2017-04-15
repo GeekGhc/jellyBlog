@@ -366,3 +366,8 @@ public function __construct()
 
 这样的话如果用户是登陆进来的并且是`admin`这个角色才能访问到后台路由
 不然的话就会跳转到首页 这也就实现了通过`middleware`来进行后台的管理操作
+
+最后推荐几个我用过的感觉非常不错的针对用户权限的`Packages`
+- [Laravel Permission](https://github.com/spatie/laravel-permission) 目前我的项目就是用的这个`Package`
+- [Laravel Roles](https://github.com/romanbican/roles)
+- [ultraware/roles](https://github.com/ultraware/roles)
