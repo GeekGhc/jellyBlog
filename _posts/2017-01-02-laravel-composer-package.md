@@ -97,7 +97,38 @@ class Flash extends Facade
 ```shell
 $ php artisan make:provider FlashProvider
 ```
-将生成的 `app/Providers/FlashProvider.php` 文件移动到我们的 `packages/geekghc/laraflash/src/GeekGhc/LaraFlash/` 目录下面，并注册 `FlashProvider` 到 `config/app.php` 
+将生成的 `app/Providers/FlashProvider.php` 文件移动到我们的 `packages/geekghc/laraflash/src/GeekGhc/LaraFlash/` 目录下面，
+并注册 `FlashProvider` 到 `config/app.php` 
+
+在`FlsahProvider`里面我们去写一下之后我们需要绑定的类:
+```php?start_inline=1
+public function register()
+{
+    $this->app->bind(
+        'GeekGhc\LaraFlash\SessionStore',
+        'GeekGhc\LaraFlash\LaravelSessionStore'
+    );
+
+    $this->app->singleton('laraflash',function(){
+        return $this->app->make('GeekGhc\LaraFlash\FlashNotifier');
+    });
+}
+```
+这边我们就绑定了封装好的SessionStore 之后我们去配置一下视图的路径
+```php?start_inline=1
+public function boot()
+{
+    $this->loadViewsFrom(__DIR__.'/../../views','laraflash');
+    $this->publishes([
+        __DIR__.'/../../views'=>base_path('resources/views/vendor/laraFlash'),
+    ]);
+}
+```
+这里我们就发布了我们的视图文件 在执行
+```shell
+$ php artisan vendor:publish
+```
+我们就可以在`laravel`项目的`resources/views/vendor/laraFlash`去自定义最后的样式效果
 
 在`config/app.php`去注册我们的服务
 ```php?start_inline=1
