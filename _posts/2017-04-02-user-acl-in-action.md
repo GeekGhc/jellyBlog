@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 谈谈怎么很好的去实现用户的权限管理
+title: 谈谈怎么实现用户的权限管理
 description: 系统的后台管理者用户的信息 其中就包括用户的角色 一个大的系统用户的角色也分很多种 最近在做后台方面的内容 索性就以
             laravel项目为例 谈谈怎么去实现用户的去权限管理
 tags:
@@ -344,7 +344,7 @@ public function isAdmin()
 }
 ```
 当然写完我们的**handle**方法 我们还需要去`Kernel.php`注册我们这个新的`middleware`
-```php?stat_inline=1
+```php?start_inline=1
 protected $routeMiddleware = [
     'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
     'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
