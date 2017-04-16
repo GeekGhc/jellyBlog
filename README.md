@@ -1,10 +1,10 @@
-jellybean | 葛华春博客
+JellyBean | Jelly Blog
 ===
 
 http://jellybook.me
 
 
-jellybean | 社区
+JellyBean | 社区
 ===
 
 https://kobeman.com
