@@ -21,11 +21,11 @@ poster: /attachments/images/articles/2017-04-14/1.png
 
 ## 效果图
 ### 后台首页
-![image](/attachments/images/articles/2017-04-06/1.png)
+![image](/attachments/images/articles/2017-04-14/1.png)
 ### 文章列表
-![image](/attachments/images/articles/2017-04-06/2.png)
+![image](/attachments/images/articles/2017-04-14/2.png)
 ### 创建文章
-![image](/attachments/images/articles/2017-04-06/3.png)
+![image](/attachments/images/articles/2017-04-14/3.png)
 
 ## 安装
 ### 1.clone到本地
