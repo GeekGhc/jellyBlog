@@ -20,7 +20,7 @@ poster: /attachments/images/articles/2017-04-18/1.png
 
 `vue`+`vuex`+`vue-router`+`vue-axios`+`vuelidate`+`vue-quill-editor`+`element-ui`
 
-[barryvdh/laravel-cors](https://github.com/barryvdh/laravel-cors) 一个http代理的中间件，进行http请求转发，实现跨域请求
+[barryvdh/laravel-cors](https://github.com/barryvdh/laravel-cors) 一个`http`代理的中间件，进行http请求转发，实现跨域请求
 
 `postman` 接口测试工具
 
