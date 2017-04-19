@@ -17,7 +17,7 @@ poster: /attachments/images/articles/2017-04-06/7.png
 ## 前言
 基于[laravist](https://www.laravist.com/)社区知乎系列项目
 
-> 项目地址[laravel-zhihu](https://github.com/GeekGhc/zhihu-app)
+> `Github` 项目地址  [laravel-zhihu](https://github.com/GeekGhc/zhihu-app)
 
 ## 功能
 
