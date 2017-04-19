@@ -1,13 +1,14 @@
 ---
 layout: post
-title: Laravel-VueJs 知乎
-description: 基本laravel5.3开发的知乎问答系统 采用AdminLTE后台模板
+title: Laravel AdminLTE 后台模板
+description: 基本AdminLTE的后台模板 集成于laravel5 为实现更为方便的后台管理
 tags:
      Laravel
-     VueJs
+     AdminLTE
+     BackStage
 class: post-five
 comments: true
-poster: /attachments/images/articles/2017-04-12/1.png
+poster: /attachments/images/articles/2017-04-14/1.png
 ---
 
 # AdminLTE For Laravel
