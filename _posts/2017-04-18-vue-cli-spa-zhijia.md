@@ -50,8 +50,8 @@ poster: /attachments/images/articles/2017-04-18/1.png
 - [x] 帖子收藏列表
 
 ## 效果图
-![1](/attachments/images/articles/2017-04-14/1.png)
-![2](/attachments/images/articles/2017-04-14/2.png)
-![3](/attachments/images/articles/2017-04-14/3.png)
-![4](/attachments/images/articles/2017-04-14/4.png)
-![5](/attachments/images/articles/2017-04-14/5.png)
+![1](/attachments/images/articles/2017-04-18/1.png)
+![2](/attachments/images/articles/2017-04-18/2.png)
+![3](/attachments/images/articles/2017-04-18/3.png)
+![4](/attachments/images/articles/2017-04-18/4.png)
+![5](/attachments/images/articles/2017-04-18/5.png)
