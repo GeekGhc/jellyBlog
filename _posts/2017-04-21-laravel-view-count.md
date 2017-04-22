@@ -16,7 +16,7 @@ poster: /attachments/images/articles/2017-04-21/poster.jpg
 
 当然我们也可以有其他的更为简单的处理方式 这里我们可以结合`Laravel`的`Event Listener`来实现文章浏览的监听
 
-## 首先我们可以先去创建一个ArticleController 这样我们就可以去执行文章的一系列业务逻辑
+首先我们可以先去创建一个ArticleController 这样我们就可以去执行文章的一系列业务逻辑
 
 ```shell
 $ php artisan make:controller ArticleController
