@@ -18,6 +18,8 @@ poster: /attachments/images/articles/2017-04-19/poster.png
 所以今天不谈后端 就单纯的说下  磨砂的这种效果实现 最后我会将代码发布到[CodePen](https://codepen.io/)上
 
 > [MDN filter说明](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)
+>
+> [我的CodePen笔记地址](https://codepen.io/JellyGavin/pen/xdOEpy)
 
 ## CodePen
 首先说下`CodePen`这个平台 可能很多人也知道 但我想更多人最为熟悉的还是 [jsfiddle](https://jsfiddle.net/)
@@ -110,7 +112,11 @@ body , .main::before {
 
 `filter`函数里有几种效果 这几种具体的效果很简单 在[MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter)里讲的也挺明白 在这我们用到的就是`blur`
 
-`blur` 提供了图片的高斯模糊的效果
+`blur` 提供了图片的高斯模糊的效果  其实`filter`提供的就是对图像的一个滤镜效果 如果结合图像的透明度和阴影效果 
+
+那么我们就可以做出一个磨砂的效果
+
+> 我们现在用到的`blur` 的值越大越模糊；如果没有设定值，则默认是0；这个参数可设置css长度值，但不接受百分比值
 
 所以我们在`.main`里可以去加上这个属性:
 ```css
