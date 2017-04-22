@@ -12,11 +12,11 @@ poster: /attachments/images/articles/2017-04-21/poster.jpg
 ---
 
 ## 介绍
-在有关用户浏览文章或帖子的访问数的统计时 我们可能会考虑到使用缓存机制来实现 即可以使用Redis来存储一篇帖子的浏览数
+在有关用户浏览文章或帖子的访问数的统计时 我们可能会考虑到使用缓存机制来实现 即可以使用`Redis`来存储一篇帖子的浏览数
 
 当然我们也可以有其他的更为简单的处理方式 这里我们可以结合`Laravel`的`Event Listener`来实现文章浏览的监听
 
-首先我们可以先去创建一个ArticleController 这样我们就可以去执行文章的一系列业务逻辑
+首先我们可以先去创建一个`ArticleController` 这样我们就可以去执行文章的一系列业务逻辑
 
 ```shell
 $ php artisan make:controller ArticleController
