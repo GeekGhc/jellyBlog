@@ -162,4 +162,4 @@ public function storeViewedArticle($article)
  
 当然也有相关的`Packages`可以使用 
 
-- 这里推荐[cjjian](https://pigjian.com/article/laravel-visitor-registry)的一篇博文可供参考
+> 这里推荐[cjjian](https://pigjian.com/article/laravel-visitor-registry)的一篇博文可供参考
