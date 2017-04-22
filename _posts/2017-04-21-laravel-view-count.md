@@ -134,7 +134,7 @@ public function handle(ArticleView $event)
 }
 ```
 而这里需要的其他方法则定义如下(都给出了相应的解释)
-```php?stsrt_inline=1
+```php?start_inline=1
 //文章最近是否被浏览过
 public function hasViewedArticle($article)
 {
