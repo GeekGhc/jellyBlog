@@ -93,6 +93,20 @@ Current dir: /var/www/domain.com
 - `shared`   包含你部署项目的共享文件或目录（如：Laravel 的 Storage 目录、.env 文件等 ）
 - `current`  软连接到你当前发布的版本
 
+所以如果你是`nginx`服务器 那么最后的`server root`应该这样配置
+```php?start_inline=1
+server {
+  listen 80;
+  server_name domain.org;
+
+  root /var/www/html/current/public;
+
+  location / {
+    try_files $uri /index.php$is_args$args;
+  }
+}
+```
+
 release默认保存5个版本  当然你也可以修改成你希望的值
 ```shell
 $ set('keep_releases', 10);
