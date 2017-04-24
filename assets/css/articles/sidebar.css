@@ -1,0 +1,14 @@
+.aside-list > .item a{
+    text-decoration: none;
+    cursor: pointer;
+    transition: color .05s linear,margin .25s linear,transform .25s linear,-webkit-filter .25s linear;
+}
+.aside-list > .item a:hover{
+    margin-left: 6px;
+}
+.aside-links{
+    margin-top: 3em !important;
+}
+.aside-list > .item .title{
+    font-size: 14px;
+}

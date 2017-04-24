@@ -13,18 +13,18 @@ menu: Blog
             <h1> Become A Good Programmer</h1>
         </div>
         <div class="collection-info">
-            <span class="col-item"><i class="fa fa-location-arrow"></i>China Nanjing</span>
-            <span class="col-item"><i class="fa fa-code"></i>ISpace Community</span>
-            <span class="col-item"><i class="fa fa-github"></i>GeekGhc</span>
+            <a class="col-item"><i class="fa fa-location-arrow"></i>China Nanjing</a>
+            <a class="col-item" href="https://kobeman.com"><i class="fa fa-code"></i>ISpace Community</a>
+            <a class="col-item" target="_blank" href="https://github.com/GeekGhc"><i class="fa fa-github"></i>GeekGhc</a>
         </div>
     </div>
 </div>
 
 
 <div class="container articles-page-content">
-    <div class="container">
+    <div class="">
         <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+            <div class="col-md-8 col-sm-12 col-xs-12">
                 {% for post in paginator.posts %}
                 <div class="media">
                     <a class="media-left">
@@ -85,6 +85,11 @@ menu: Blog
                     </div>
                 </div>
 
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                {% include sidebar-article.html %}
+                {% include sidebar-repository.html %}
+                {% include sidebar-links.html %}
             </div>
         </div>
     </div>

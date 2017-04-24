@@ -3,21 +3,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <a href="https://www.facebook.com/ghcsun" target="_blank" class="ui circular grey icon button">
-                    <i class="facebook icon"></i>
+                {% for member in site.data.links %}
+                <a href="{{ member.link }}" target="_blank" class="ui circular grey icon button">
+                    <i class="{{ member.class }} icon"></i>
                 </a>
-                <a href="http://weibo.com/2721760737/profile?topnav=1&wvr=6&is_all=1" target="_blank" class="ui circular grey icon button">
-                    <i class="weibo icon"></i>
-                </a>
-                <a href="https://twitter.com/JellyGavin" target="_blank" class="ui circular grey icon button">
-                    <i class="twitter icon"></i>
-                </a>
-                <a href=" https://github.com/GeekGhc" target="_blank" class="ui circular grey icon button">
-                    <i class="github icon"></i>
-                </a>
-                <a href="https://plus.google.com/u/0/108390134136813492774" target="_blank" class="ui circular grey plus icon button">
-                    <i class="google plus icon"></i>
-                </a>
+                {% endfor %}
             </div>
         </div>
     </div>

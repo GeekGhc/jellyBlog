@@ -1,0 +1,23 @@
+- name: ghcsun
+  class: facebook
+  link: https://www.facebook.com/ghcsun
+
+- name: JellyGavin
+  class: twitter
+  link: https://twitter.com/JellyGavin
+
+- name: GeekGhc
+  class: github
+  link: https://github.com/GeekGhc
+
+- name: Jenny葛
+  class: weibo
+  link: http://weibo.com/2721760737/profile?topnav=1&wvr=6&is_all=1
+
+- name: 葛华春
+  class: google plus
+  link: https://plus.google.com/u/0/108390134136813492774
+
+- name: 葛华春
+  class: linkedin
+  link: https://www.linkedin.com/in/%E5%8D%8E%E6%98%A5-%E8%91%9B-25935613b/

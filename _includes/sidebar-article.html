@@ -1,0 +1,21 @@
+<table class="ui purple table aside-article">
+    <thead>
+    <tr class="">
+        <th><i class="fire icon"></i>
+            <span>Popular Articles</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody class="aside-list">
+    {% for article in site.data.sidebarArticles %}
+    <tr class="item">
+        <td>
+            <i class="icon coffee"></i>
+            <span>
+            <a href="{{ article.link }}" class="title">{{ article.title }}</a>
+            </span>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,5 +1,5 @@
 body{
-    background: #f9f9fb;
+    background: #f7f8fa!important;
     margin: 0;
     padding: 0;
 }
@@ -719,4 +719,15 @@ body{
 
 .pl-mo {
     color: #1d3e81
+}
+
+
+.icon-sm{
+    margin-right:4px;
+}
+.icon-md{
+    margin-right:6px;
+}
+.icon-lg{
+    margin-right:8px;
 }

@@ -1,0 +1,19 @@
+<table class="ui purple table aside-links">
+    <thead>
+    <tr class="">
+        <th> <i class="icon linkify"></i>
+            <span>Related Links</span>
+        </th>
+    </tr>
+    </thead>
+    <tbody class="aside-list">
+    {% for link in site.data.sidebarLinks %}
+    <tr class="item">
+        <td>
+            <i class="icon bullseye"></i>
+            <a href="{{ link.link }}" target="_blank" class="title">{{ link.name }}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
