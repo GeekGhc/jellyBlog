@@ -47,7 +47,7 @@
     font-size: 18px;
     color: rgba(255,255,255,.5);
     padding: 6px 15px !important;
-    border-radius: 3px!important;
+    border-radius: 50% !important;
 }
 .home .site-header  .site-header-nav .site-header-nav-item:hover{
     color: #fff;
@@ -104,10 +104,7 @@
     animation-fill-mode: both;
 }
 .collection-header .collection-content h1{
-    /*-webkit-margin-before: 0.67em;
-    -webkit-margin-after: 0.67em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;*/
+
 }
 
 .collection-info {
@@ -118,11 +115,6 @@
     animation-delay: 0.5s;
     animation-name: fadeInUp;
     animation-fill-mode: both;
-
-    /*-webkit-margin-before: 1em;
-    -webkit-margin-after: 1em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;*/
 }
 .collection-info a{
     cursor: pointer;
