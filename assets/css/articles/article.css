@@ -1,6 +1,6 @@
 /************** index ***************/
 .site-header {
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
@@ -10,7 +10,9 @@
     float: right;
     /*margin-bottom: -20px;*/
 }
-
+.jellyBlog{
+    padding-top: 6px;
+}
 .site-header h1 {
     cursor: pointer;
     color: #000;
@@ -26,7 +28,7 @@
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    padding: 6px 10px 15px;
+    /*padding: 6px 10px 15px;*/
     margin-left: 0.5em;
     font-size: 18px;
     color: #777;
@@ -42,10 +44,14 @@
     border-bottom: none;
 }
 .home .site-header  .site-header-nav .site-header-nav-item{
+    font-size: 18px;
     color: rgba(255,255,255,.5);
+    padding: 6px 15px !important;
+    border-radius: 3px!important;
 }
 .home .site-header  .site-header-nav .site-header-nav-item:hover{
     color: #fff;
+    background: rgba(255,255,255,.3);
 }
 .home .site-header h1{
     color: #fff;
@@ -88,13 +94,35 @@
 }
 
 .collection-header .collection-content {
-    /*letter-spacing: .1em;*/
     padding: 20px 0;
     vertical-align: middle;
+
+    visibility: visible;
+    animation-duration: 1.5s;
+    animation-delay: 0.2s;
+    animation-name: fadeInUp;
+    animation-fill-mode: both;
+}
+.collection-header .collection-content h1{
+    /*-webkit-margin-before: 0.67em;
+    -webkit-margin-after: 0.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;*/
 }
 
 .collection-info {
     margin: 0;
+
+    visibility: visible;
+    animation-duration: 1.5s;
+    animation-delay: 0.5s;
+    animation-name: fadeInUp;
+    animation-fill-mode: both;
+
+    /*-webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;*/
 }
 .collection-info a{
     cursor: pointer;

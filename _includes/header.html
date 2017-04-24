@@ -28,7 +28,7 @@
 <body class="{{ page.class }}">
 <header class="site-header">
     <div class="container">
-        <a href="/blog"><h1>Jelly Blog</h1></a>
+        <a href="/blog"><h1 class="jellyBlog">Jelly Blog</h1></a>
         <nav class="site-header-nav" role="navigation">
             {% for nav in site.navs %}
             <a href="{{ nav.href }}" class="site-header-nav-item" target="{{ nav.target | default: _self }}">{{nav.label}}</a>

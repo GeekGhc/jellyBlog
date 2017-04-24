@@ -12,3 +12,6 @@
 .aside-list > .item .title{
     font-size: 14px;
 }
+.aside-list > .item  .article-title{
+    padding-left: 20px;
+}

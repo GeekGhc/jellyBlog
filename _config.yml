@@ -64,13 +64,8 @@ navs:
     label: Article
 
   -
-    href: https://github.com/GeekGhc
-    label: GitHub
-    target: _blank
-
-  -
-    href: /open-source
-    label: Open-Source
+    href: /project
+    label: Project
 
   -
     href: https://kobeman.com
