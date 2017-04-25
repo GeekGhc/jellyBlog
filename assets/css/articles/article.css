@@ -156,7 +156,7 @@
 
 .articles-page-content .media {
     border: none;
-    padding-bottom: 2em;
+    padding: 0 10px 2em;
     border-bottom: 1px solid rgba(34, 36, 38, .15);
 }
 
@@ -312,7 +312,7 @@
 }
 
 .article-content {
-    padding: 28px 0px;
+    padding: 28px 10px;
 }
 
 .article-collection-title {
