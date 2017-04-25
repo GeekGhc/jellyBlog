@@ -64,13 +64,13 @@ navs:
     label: Article
 
   -
-    href: /project
-    label: Project
-
-  -
     href: https://kobeman.com
     label: Community
     target: _blank
+
+  -
+    href: /project
+    label: Project
 
   -
     href: /about

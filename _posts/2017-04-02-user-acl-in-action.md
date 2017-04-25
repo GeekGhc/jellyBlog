@@ -91,6 +91,7 @@ if (Gate::forUser($user)->allows('update-post', $post)) {
 ```
 
 我们也可以使用`authorize`这个方法去实现
+
 ```php?start_inline=1
 Auth::loginUsingId(1);
 $post = Post::findOrFail($id);
@@ -103,6 +104,7 @@ return $post->title;
 当编写 `Blade` 模板时，你可能希望页面的指定部分只展示给允许授权访问给定动作的用户。例如，你可能希望只展示更新表单给有权更新帖子的用户。这种情况下，你可以直接使用 **@can** 和 **@cannot** 指令
 
 举例来说的话我们可以在`posts/show.blade.php`去看下
+
 ```html
 <body>
 <h1>{{$post->title}}</h1>

@@ -7,8 +7,8 @@
 - title: Laravel用户之间相互关注
   link: http://jellybook.me/articles/2017/03/laravel-user-follow
 
-- title: vuelidate结合Laravel后端数据注册验证
-  link: http://jellybook.me/articles/2017/02/laravel-vue-validation
-
 - title: Webhook 自动部署
   link: http://jellybook.me/articles/2017/01/webhook-deploy-server
+
+- title: vuelidate结合Laravel后端数据验证
+  link: http://jellybook.me/articles/2017/02/laravel-vue-validation
