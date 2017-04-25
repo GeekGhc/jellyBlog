@@ -2,6 +2,52 @@
     padding-top: 30px;
 }
 
+.project-card{
+    webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 290px;
+    min-height: 0;
+    background: #FFF;
+    padding: 0;
+    border: none;
+    border-radius: .48571429rem;
+    margin-right: 0px;
+    box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+}
+
+.project-card .poster{
+    padding: 20px 10px;
+    position: relative;
+    display: table;
+    background: #7474BF; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #7474BF, #348AC7); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #7474BF, #348AC7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+}
+.project-card .poster .icon{
+    display: block;
+    height: 1em;
+    font-size: 6rem;
+    color: #fff;
+    width: 100%;
+    padding-top: 22px;
+    text-decoration: none;
+}
+.project-card .poster .title{
+    verflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 1em;
+    margin-bottom: 1.2em;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #fff;
+}
+
 .project-card .content{
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
@@ -16,12 +62,24 @@
     border-radius: 0;
 }
 .project-card .footer{
-    padding: 0 15px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    color: #777;
-    font-size: 12px;
+    max-width: 100%;
+    min-height: 0!important;
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    border-top: 1px solid rgba(0,0,0,.05)!important;
+    position: static;
+    background: 0 0;
+    width: auto;
+    margin: 0;
+    padding: .75em 1em;
+    top: 0;
+    left: 0;
+    color: rgba(0,0,0,.4);
+    box-shadow: none;
+    transition: color .1s ease;
 }
 .project-card .footer .meta-info{
     margin-right: 10px;
+    color: #777;
+    font-size: 12px;
 }

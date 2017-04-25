@@ -8,7 +8,7 @@ menu: Project
 
 <div class="container">
     <h2 class="ui center aligned icon header">My Projects</h2>
-    <div class="ui segment">
+    <div class="ui segment" id="loading">
         <div class="ui active inverted dimmer">
             <div class="ui large text loader">Loading</div>
         </div>
@@ -16,30 +16,64 @@ menu: Project
 </div>
 
 <div class="container project-page">
-    <div class="row">
-        <div class="col-md-4 col-xs-12 col-sm-12">
+    <div class="row" id="repo-lists">
+        <div class="col-md-4 col-xs-12 col-sm-12" id="repo-template" style="display:none">
             <div class="project-card">
-                <div class="image">
-                    <img src="/images/avatar2/large/matthew.png">
-                </div>
+                <a class="poster">
+                    <i class="icon code"></i>
+                    <h3 class="title">[repo.name]</h3>
+                </a>
                 <div class="content">
-                    <div class="header">Matt Giampietro</div>
-                    <div class="meta">
-                        <a>Friends</a>
-                    </div>
-                    <div class="description">Matthew is an interior designer living in New York. </div>
+                    <p>[repo.description]</p>
                 </div>
                 <div class="footer">
-                    <span class="right floated">Joined in 2013 </span>
-                    <span><i class="user icon"></i> 75 Friends </span>
+                    <span class="meta-info">[repo.language]</span>
+                    <span class="meta-info"><i class="icon star"></i>[repo.stargazers_count]</span>
+                    <span class="meta-info"><i class="share alternate icon"></i>[repo.forks_count]</span>
+                    <span class="meta-info"><i class="calendar icon"></i>[repo.updated_at]</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<script src="/assets/js/source/underscore-min.js"></script>
 <script>
-    $(function(){
+    $(function () {
+        var loadingMap = $('#loading');
+        var repoListWrap = $('#repo-template');
+        var repoList = $('<div class="col-md-4 col-xs-12 col-sm-12" id="repo-template"></div>');
+        var repoCount = 0;//项目数量
 
+        $.get("https://api.github.com/users/GeekGhc/repos?type=owner", function (repos) {
+            if (!repos) {
+                alert("failure");
+            }
+            repos = _.sortBy(repos, function (repo) {
+                return -(repo.stargazers_count + repo.forks_count + repo.watchers_count);
+            });
+
+            //获取项目的基本信息 
+            repos.forEach(function (repo) {
+                if (repo.fork) return;
+                repoCount++;
+
+                var date = new Date(repo.updated_at);
+
+                // repo.updated_at = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDay() + ' ' + date.getHours() + ':' + date.getMinutes();
+                repo.updated_at = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDay();
+                repo.language = repo.language || 'UnKnown';
+
+                var repoTemplate = $('#repo-template').html();
+                var item = repoTemplate.replace(/\[(.*?)\]/g, function () {
+                    return eval(arguments[1]);
+                });
+
+                loadingMap.css('display',"none");
+                repoList.append(item);
+            });
+
+            repoListWrap.html(repoList);
+            console.log("html = "+repoListWrap.html);
+        })
     })
 </script>
