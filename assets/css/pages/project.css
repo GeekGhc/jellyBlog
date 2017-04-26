@@ -113,6 +113,26 @@
     cursor: pointer;
 }
 
+.project-card .poster .play-poster{
+    display: none;
+    z-index: 1;
+    font-size: 80px;
+    background-color: transparent;
+    -webkit-transition: background-color .4s;
+    transition: background-color .4s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    color: #fff;
+}
+.project-card .poster:hover .play-poster{
+    display: block;
+    background-color: rgba(0,0,0,.7);
+}
+
 .project-card .poster .icon{
     display: block;
     height: 1em;
