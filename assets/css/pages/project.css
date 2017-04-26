@@ -1,23 +1,107 @@
+.loader {
+    position: relative;
+    display: block;
+    margin: auto;
+    width: 175px;
+    height: 100px;
+}
+.loader span {
+    display: block;
+    background: #ccc;
+    width: 7px;
+    height: 10%;
+    border-radius: 14px;
+    margin-right: 5px;
+    float: left;
+    margin-top: 25%;
+}
+.loader span:last-child {
+    margin-right: 0px;
+}
+.loader span:nth-child(1) {
+    animation: load 2.5s 1.4s infinite linear;
+}
+.loader span:nth-child(2) {
+    animation: load 2.5s 1.2s infinite linear;
+}
+.loader span:nth-child(3) {
+    animation: load 2.5s 1s infinite linear;
+}
+.loader span:nth-child(4) {
+    animation: load 2.5s 0.8s infinite linear;
+}
+.loader span:nth-child(5) {
+    animation: load 2.5s 0.6s infinite linear;
+}
+.loader span:nth-child(6) {
+    animation: load 2.5s 0.4s infinite linear;
+}
+.loader span:nth-child(7) {
+    animation: load 2.5s 0.2s infinite linear;
+}
+.loader span:nth-child(8) {
+    animation: load 2.5s 0s infinite linear;
+}
+.loader span:nth-child(9) {
+    animation: load 2.5s 0.2s infinite linear;
+}
+.loader span:nth-child(10) {
+    animation: load 2.5s 0.4s infinite linear;
+}
+.loader span:nth-child(11) {
+    animation: load 2.5s 0.6s infinite linear;
+}
+.loader span:nth-child(12) {
+    animation: load 2.5s 0.8s infinite linear;
+}
+.loader span:nth-child(13) {
+    animation: load 2.5s 1s infinite linear;
+}
+.loader span:nth-child(14) {
+    animation: load 2.5s 1.2s infinite linear;
+}
+.loader span:nth-child(15) {
+    animation: load 2.5s 1.4s infinite linear;
+}
+
+@keyframes load {
+    0% {
+        background: #ccc;
+        margin-top: 25%;
+        height: 10%;
+    }
+    50% {
+        background: #444;
+        height: 100%;
+        margin-top: 0%;
+    }
+    100% {
+        background: #ccc;
+        height: 10%;
+        margin-top: 25%;
+    }
+}
+
 .project-page {
     padding-top: 30px;
 }
 
-.project-card{
+.project-card {
     webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column;
-    width: 290px;
+    width: 100%;
     min-height: 0;
     background: #FFF;
     padding: 0;
     border: none;
     border-radius: .48571429rem;
-    margin-right: 0px;
-    box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: 0 1px 0px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
 }
 
-.project-card .poster{
+.project-card .poster {
     padding: 20px 10px;
     position: relative;
     display: table;
@@ -28,6 +112,7 @@
     width: 100%;
     cursor: pointer;
 }
+
 .project-card .poster .icon{
     display: block;
     height: 1em;
@@ -37,7 +122,11 @@
     padding-top: 22px;
     text-decoration: none;
 }
-.project-card .poster .title{
+.project-card .poster .icon:hover{
+    text-decoration: none;
+}
+
+.project-card .poster .title {
     verflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -48,25 +137,27 @@
     color: #fff;
 }
 
-.project-card .content{
+.project-card .content {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
     flex-grow: 1;
     border: none;
-    border-top: 1px solid rgba(34,36,38,.1);
+    border-top: 1px solid rgba(34, 36, 38, .1);
     background: 0 0;
     margin: 0;
     padding: 1em;
     box-shadow: none;
     font-size: 1em;
     border-radius: 0;
+    text-align: center;
 }
-.project-card .footer{
+
+.project-card .footer {
     max-width: 100%;
-    min-height: 0!important;
+    min-height: 0 !important;
     -webkit-box-flex: 0;
     flex-grow: 0;
-    border-top: 1px solid rgba(0,0,0,.05)!important;
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
     position: static;
     background: 0 0;
     width: auto;
@@ -74,11 +165,12 @@
     padding: .75em 1em;
     top: 0;
     left: 0;
-    color: rgba(0,0,0,.4);
+    color: rgba(0, 0, 0, .4);
     box-shadow: none;
     transition: color .1s ease;
 }
-.project-card .footer .meta-info{
+
+.project-card .footer .meta-info {
     margin-right: 10px;
     color: #777;
     font-size: 12px;

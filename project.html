@@ -8,18 +8,30 @@ menu: Project
 
 <div class="container">
     <h2 class="ui center aligned icon header">My Projects</h2>
-    <div class="ui segment" id="loading">
-        <div class="ui active inverted dimmer">
-            <div class="ui large text loader">Loading</div>
-        </div>
+    <div class="loader" id="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 </div>
 
-<div class="container project-page">
-    <div class="row" id="repo-lists">
-        <div class="col-md-4 col-xs-12 col-sm-12" id="repo-template" style="display:none">
+<div class="container project-page" id="repo-lists">
+    <div class="ui stackable four column grid" id="repo-template" style="display: none">
+        <div class="column">
             <div class="project-card">
-                <a class="poster">
+                <a class="poster geopattern" href="[repo.html_url]" target="_blank" data-pattern-id="[repo.name]">
                     <i class="icon code"></i>
                     <h3 class="title">[repo.name]</h3>
                 </a>
@@ -40,8 +52,8 @@ menu: Project
 <script>
     $(function () {
         var loadingMap = $('#loading');
-        var repoListWrap = $('#repo-template');
-        var repoList = $('<div class="col-md-4 col-xs-12 col-sm-12" id="repo-template"></div>');
+        var repoListWrap = $('#repo-lists');
+        var repoList = $(' <div class="ui stackable three column grid" id="repo-template"></div>');
         var repoCount = 0;//项目数量
 
         $.get("https://api.github.com/users/GeekGhc/repos?type=owner", function (repos) {
@@ -52,7 +64,7 @@ menu: Project
                 return -(repo.stargazers_count + repo.forks_count + repo.watchers_count);
             });
 
-            //获取项目的基本信息 
+            //获取项目的基本信息
             repos.forEach(function (repo) {
                 if (repo.fork) return;
                 repoCount++;
@@ -67,13 +79,12 @@ menu: Project
                 var item = repoTemplate.replace(/\[(.*?)\]/g, function () {
                     return eval(arguments[1]);
                 });
-
-                loadingMap.css('display',"none");
+                loadingMap.css('display', "none");
                 repoList.append(item);
             });
 
             repoListWrap.html(repoList);
-            console.log("html = "+repoListWrap.html);
+            console.log("html = " + repoListWrap.html);
         })
     })
 </script>
