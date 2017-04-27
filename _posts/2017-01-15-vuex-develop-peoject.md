@@ -142,6 +142,51 @@ state: {
 `state`的`todos`的内容改变后就会去渲染我们的`Vue Components`
 我们就可以看到页面的数据信息发生改变 这样也就完成用户和数据的交互过程
 
+当然除了`Actions` ， `Mutations` 还有`Getters`
+
+这里的`Getters`会从`store`的对象的`state`派生出一些其他的状态
+
+这个理解起来可以是是对原本`state`的进行一个再生和过滤
+
+比如我们需要其中的一个状态的数据长度(这也是官方给出的一个实例)
+```php?start_inline=1
+getters: {
+  // ...
+  doneTodosCount: (state, getters) => {
+    return getters.doneTodos.length
+  }
+}
+```
+由于我们声明了这个`getter`  而我们是可以获取`Getters` 的 `store.getters` 对象：
+
+因此我们在需要时可以以这种方式去得到这样的派生出来的一种数据
+```php?start_inline=1
+store.getters.doneTodos // -> [{ id: 1, text: '...', done: true }]
+```
+
+最后还有一个核心的概念就是`Modules`  举个例子来说 项目里有很多的`Service`那么我们完全可以将这些`Service`分离开来
+
+在`index.js`里我们就可引入其他的`Modules`
+```php?start_inline=1
+import Vue from 'vue'
+import Vuex from 'vuex'
+
+import PlayService from './PlayService'
+import ApiService from './ApiService'
+import NotifyService from './NotifyService'
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
+  modules: {
+    PlayService,
+    ApiService,
+    NotifyService
+  }
+})
+```
+这里只是其中的一个实例
+
 对于`vuex`的使用 最好还是官方推荐的架构形式
 
 以我的一个项目为例来说吧 就是将各个工作模块区分开来
