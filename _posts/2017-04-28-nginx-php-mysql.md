@@ -60,6 +60,7 @@ $ wget http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
 ```shell
 $ yum repolist enabled | grep "mysql.*-community.*"
 ```
+![1](/attachments/images/articles/2017-04-28/1.png)
 
 3. 安装 `MySQL`(一路Y就可以)：
 
@@ -87,6 +88,9 @@ $ systemctl daemon-reload
 ```shell
 $ grep 'temporary password' /var/log/mysqld.log
 ```
+
+![2](/attachments/images/articles/2017-04-28/2.png)
+
 
 有了这个密码去登录`mysql`
 ```shell
