@@ -1,7 +1,8 @@
 ---
 layout: post
 title: 轻松部署你的PHP7运行环境
-description: 
+description: 在部署一个服务器时 我们可以有多种选择 比如apache和nginx 在这些选择之中 每个人都有最终的一个目的就是部署好环境 
+            发布自己的项目网站  这里就对Nginx+PHP7+Mysql+phpmyadmin的安装做一个总结
 tags:
      PHP
      Nginx
