@@ -53,6 +53,10 @@ $ systemctl start nginx
 ## 安装Mysql57
 1.下载 `mysql57-community-release-el7-8.noarch.rpm` 的 `YUM` 源：
 ```shell
+$ yum install mysql57-community-release-el7-8.noarch.rpm
+```
+
+```shell
 $ wget http://repo.mysql.com/mysql57-community-release-el7-8.noarch.rpm
 ```
 
