@@ -49,6 +49,11 @@ $ systemctl stop nginx
 $ systemctl start nginx
 ```
 
+设置开机启动
+```shell
+$ systemctl enable nginx
+```
+
 
 ## 安装Mysql57
 1.下载 `mysql57-community-release-el7-8.noarch.rpm` 的 `YUM` 源：
