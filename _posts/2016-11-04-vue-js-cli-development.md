@@ -3,7 +3,7 @@ layout: post
 title: Vue使用脚手架进行组件化开发
 description: Vuejs 脚手架工具是 Vuejs 官方提供的一个命令行操作工具，我们可以初始化一个 Vuejs 项目来进行组件化开发
 tags:
-     vueJs
+     VueJs
      组件化开发
      脚手架工具
 class: post-three
