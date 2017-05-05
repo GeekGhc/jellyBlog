@@ -11,7 +11,7 @@ menu: About
 
 现在是一名大三在校大学生,从事 **WEB** 开发，主要语言 `PHP` `C++`，熟悉 `Laravel`, `ThinkPHP` 框架，了解`NodeJs`的一些基本应用原理和实践
 
-对于`VueJs`这样的界面框架有着开发经验,对现代化的 `PHP` 开发比较感兴趣，
+对于`VueJs`这样的前端框架有着开发经验,对现代化的 `PHP` 开发比较感兴趣，
 
 对 `MySQL`，`Redis`，`Mongodb` 等数据库有所了解应用，前端方面熟悉 `jQuery`, `CSS` 等基础。对构建工具`gulp` `webpack`有过项目经验
 
@@ -20,10 +20,11 @@ menu: About
 ## 联系
 
 - QQ: 2438462863
-- 邮箱：ghcsun@gmail.com
+- 邮箱：gehuachun@outlook.com
 - 主页：[http://jellybook.me](http://jellybook.me)
 - 站点：[https://kobeman.com](https://kobeman.com)
 - Github：[@GeekGhc](https://gtihub.com/GeekGhc)
+- SegmentFault :[@JellyBean](https://segmentfault.com/u/jellygavin)
 - Google：[@葛华春](https://plus.google.com/u/0/108390134136813492774)
 
 ## keywords
