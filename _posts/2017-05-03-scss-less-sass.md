@@ -137,6 +137,25 @@ body {
 ```
 可以体会得到的是变量的使用 就和一个全局变量的作用差不多  我们在需要修改颜色等样式的值时只需要去修改定义的值就好了
 
+> 当然变量也是有作用域的 就如上面的是声明在规则块定义外的 如果定义在css规则块内，那么该变量只能在此规则块内使用
+
+```scss?
+$nav-color: #F90;
+nav {
+  $width: 100px;
+  width: $width;
+  color: $nav-color;
+}
+
+//编译后
+
+nav {
+  width: 100px;
+  color: #F90;
+}
+```
+这里的`$width`就只能在`nav`这个规则快里使用
+
 #### 2.嵌套
 这个也是我认为非常方便的一个地方 很多时候样式的定义需要一堆的父级类名的限制 最后的结果呢一个样式却堆成很长 又很难后期维护
 
@@ -176,6 +195,8 @@ section {
 ```
 这里最后的编译结果和上面的是一样的 最后的结果也一目了然了 下面的定义我们很清楚的看到父级与子级的关系 修改起来也十分方便
 
+> 这里使用了一个父选择器的标识符&
+
 #### 3. Mixins (混入)
 `Mixins` 有点像是函数或者是`C`语言的宏，我个人更觉得更像是函数的定义  当你某段 `CSS` 经常需要在多个元素中使用时
 
@@ -183,13 +204,13 @@ section {
 
 同时你可以传入你的`参数` 那么那块就会载入你定义在`Mixins`的样式代码了
 
-在Sass里
+在**Sass**里
 ```scss?
 
 ```
 
-在Less语法里
-```less?
+在**Less**语法里
+```sass?
 .error(@borderWidth: 2px) {
   border: @borderWidth solid #F00;
   color: #F00;
@@ -221,5 +242,6 @@ section {
 始终记住存在即合理  所以也没必要太纠结选择那种工具 实现自己最为满意的开发方式就`ok`
 
 
-### 相关文章
-- [http://www.oschina.net/question/12_44255?sort=default&p=4](http://www.oschina.net/question/12_44255?sort=default&p=4)
+### 相关链接
+- [SASS中文网](http://www.sasschina.com/)
+- [Less手册](http://less.bootcss.com/)
