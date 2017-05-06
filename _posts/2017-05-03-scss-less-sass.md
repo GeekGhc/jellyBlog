@@ -30,7 +30,7 @@ poster: /attachments/images/articles/2017-05-03/poster.jpg
 而这些预处理器无非就是集合了语法、变量、嵌套、混入(Mixin)、继承、导入、函数和操作符等方面的操作处理
 
 ### Sass
-**Sass** (Syntactically Awesome Stylesheets)是一种动态样式语言，`Sass`语法属于缩排语法，
+**Sass**是一种动态样式语言，`Sass`语法属于缩排语法，
 
 比`css`比多出好些功能(如变量、嵌套、运算,混入(Mixin)、继承、颜色处理，函数等)，这样也使开发者更加的容易阅读
 
@@ -51,23 +51,128 @@ poster: /attachments/images/articles/2017-05-03/poster.jpg
 
 首先文件扩展名不同，`Sass` 是以`".sass"`后缀为扩展名，而 `SCSS` 是以`".scss"`后缀为扩展名
 
-语法书写方式不同，`Sass` 是以严格的缩进式语法规则来书写(这也是之前我们所提到的)  不带大括号`({})`和分号`(;)`，而 `SCSS` 的语法书写和我们的 `CSS` 语法书写方式非常类似。
+语法书写方式不同，`Sass` 是以严格的缩进式语法规则来书写(这也是之前我们所提到的) 
+ 
+不带大括号`({})`和分号`(;)`，而 `SCSS` 的语法书写和我们的 `CSS` 语法书写方式非常类似。
 
 举个例子来说的话:
 
+##### Sass语法
+```sass?
+$primary-color: #eee //定义变量
+
+body
+  color: $primary-color
+```
+##### Scss语法
+```scss?
+$primary-color: #eee;
+
+body {
+  color: $primary-color;
+}
+```
+最后编译的结果是:
+```css?
+body {
+  color: #eee;
+}
+```
+
+
 ### Less
+受`SASS`的影响较大，但又使用`CSS`的语法，让大部分开发者和设计师更容易上手，在`ruby`社区之外支持者远超过`SASS`
+
+其缺点是比起`SASS`来，可编程功能不够，不过优点是简单和兼容`CSS`，个人实际开发的话会更容易上手 反过来也影响了`SASS`演变到了`SCSS`的时代
+
+
+### Stylus
+**2010**年产生，来自`Node.js`社区，主要用来给`Node`项目进行`CSS`预处理支持
+
+在此社区之内有一定支持者，在广泛的意义上人气还完全不如`SASS`和`LESS`
 
 ## 简单语法使用
 
-###  Sass
-1.变量
-`SASS`允许使用变量，所有变量以`$`开头。
+#### 1.变量
+你可以在 CSS 预处理器中声明变量，并在整个样式单中使用，支持任何类型的变量
+例如颜色、数值(不管是否包括单位)、文本。然后你可以任意引用该变量
+
+不同的是`Sass`允许使用变量，所有变量以`$`开头 
 ```sass?
-　　$blue : #1875e7;　
-　　div {
-　　　color : $blue;
-　　}　　
+$mainColor: #0982c1;
+$siteWidth: 1024px;
+$borderStyle: dotted;
+ 
+body {
+  color: $mainColor;
+  border: 1px $borderStyle $mainColor;
+  max-width: $siteWidth;
+}
 ```
+而`Less`则以`@`开始
+```scss?
+@mainColor: #0982c1;
+@siteWidth: 1024px;
+@borderStyle: dotted;
+ 
+body {
+  color: @mainColor;
+  border: 1px @borderStyle @mainColor;
+  max-width: @siteWidth;
+}
+```
+
+所以最后的编译结果就是:
+```css?
+body {
+  color: #0982c1;
+  border: 1px dotted #0982c1;
+  max-width: 1024px;
+}
+```
+可以体会得到的是变量的使用 就和一个全局变量的作用差不多  我们在需要修改颜色等样式的值时只需要去修改定义的值就好了
+
+#### 2.嵌套
+这个也是我认为非常方便的一个地方 很多时候样式的定义需要一堆的父级类名的限制 最后的结果呢一个样式却堆成很长 又很难后期维护
+
+特别的在我们需要在`CSS`中相同的 `parent` 引用多个元素，这将是非常乏味的，你需要一遍又一遍地写 `parent`。例如
+```css?
+section {
+  margin: 10px;
+}
+section nav {
+  height: 25px;
+}
+section nav a {
+  color: #0982C1;
+}
+section nav a:hover {
+  text-decoration: underline;
+}
+```
+
+这时我们在Css预处理器里可以这样定义
+```scss?
+section {
+  margin: 10px;
+ 
+  nav {
+    height: 25px;
+ 
+    a {
+      color: #0982C1;
+ 
+      &amp;:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+```
+这里最后的编译结果和上面的是一样的 最后的结果也一目了然了 下面的定义我们很清楚的看到父级与子级的关系 修改起来也十分方便
+
+#### 3. Mixins (混入)
+
 
 ## 总结
 
@@ -80,3 +185,7 @@ poster: /attachments/images/articles/2017-05-03/poster.jpg
 在现在很多的公司都开始转向与用`Sass` 而个人开发的话`Less`更为容易上手和方便 其实无论哪种选择 都是可以的
 
 始终记住存在即合理  所以也没必要太纠结选择那种工具 实现自己最为满意的开发方式就`ok`
+
+
+### 相关文章
+- [http://www.oschina.net/question/12_44255?sort=default&p=4](http://www.oschina.net/question/12_44255?sort=default&p=4)
