@@ -165,7 +165,7 @@ section {
     a {
       color: #0982C1;
  
-      &amp;:hover {
+      &:hover {
         text-decoration: underline;
       }
     }
