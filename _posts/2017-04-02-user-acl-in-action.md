@@ -105,7 +105,7 @@ return $post->title;
 
 举例来说的话我们可以在`posts/show.blade.php`去看下
 
-```html
+```php?start_inline=1
 <body>
 <h1>{{$post->title}}</h1>
 @can('user-post', $post)

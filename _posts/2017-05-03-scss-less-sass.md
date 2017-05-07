@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 浅谈CSS的三个预处理器(框架)
+title: 浅谈CSS常用的预处理器(框架)
 description: CSS预处理器技术已经非常的成熟，而且也涌现出了很多种不同的CSS预处理器语言，而我们接触最多的就是Scss,Stylus,Less。
              如此之多的CSS预处理器 其终究目的是使得CSS开发更灵活和更强大
 tags:
@@ -197,6 +197,45 @@ section {
 
 > 这里使用了一个父选择器的标识符&
 
+当然还有就是群组选择器的嵌套 举例来说的话就是:
+```scss?
+.container {
+  h1, h2, h3 {margin-bottom: .8em}
+}
+```
+当然这样是等价于:
+```css?
+.container h1, .container h2, .container h3 { margin-bottom: .8em }
+```
+这样其实也很容易明白
+
+> 对于选择器的使用其实还有诸如  子组合选择器和同层组合选择器：>、+和~ 这些在文档上都有写到 看一下就能明白了
+>
+> 理解起来和父选择器差不多
+
+还有一个值得看一下的就是属性的嵌套  比如在对于`border`的定义
+
+如果要反复写`border-style` `border-width` `border-color`以及`border-*`等也是非常烦人的。在预处理器中，你只需敲写一遍`border`
+
+```scss?
+nav {
+  border: {
+  style: solid;
+  width: 1px;
+  color: #ccc;
+  }
+}
+```
+最后的编译结果看看也能知道就是:
+```css? 
+nav {
+  border: {
+  style: solid;
+  width: 1px;
+  color: #ccc;
+  }
+}
+```
 #### 3. Mixins (混入)
 `Mixins` 有点像是函数或者是`C`语言的宏，我个人更觉得更像是函数的定义  当你某段 `CSS` 经常需要在多个元素中使用时
 
