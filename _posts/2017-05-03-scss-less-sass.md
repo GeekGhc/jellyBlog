@@ -236,16 +236,39 @@ nav {
   }
 }
 ```
-#### 3. Mixins (混入)
+#### 3. Mixins (混合器)
 `Mixins` 有点像是函数或者是`C`语言的宏，我个人更觉得更像是函数的定义  当你某段 `CSS` 经常需要在多个元素中使用时
 
 你可以为这些共用的 `CSS` 定义在一个 `Mixin`，然后你只需要在需要引用这些 `CSS` 地方调用该 `Mixin` 即可 
 
 同时你可以传入你的`参数` 那么那块就会载入你定义在`Mixins`的样式代码了
 
+##### 使用混合器
 在**Sass**里
 ```scss?
-
+@mixin rounded-corners {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+```
+这样你就可以在需要这块代码的地方去引入
+```css?
+notice {
+  background-color: green;
+  border: 2px solid #00aa00;
+  @include rounded-corners;
+}
+```
+所以最终编译的结果就是
+```css?
+.notice {
+  background-color: green;
+  border: 2px solid #00aa00;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
 ```
 
 在**Less**语法里
@@ -267,7 +290,56 @@ nav {
   .error(5px); 
 }
 ```
-    
+
+> 当然混合器中不仅可以包含属性，也可以包含css规则，包含选择器和选择器中的属性
+
+举例来说就是
+```scss?
+@mixin no-bullets {
+  list-style: none;
+  li {
+    list-style-image: none;
+    list-style-type: none;
+    margin-left: 0px;
+  }
+}
+```
+其实最后编译的道理是相同的这里就不过多展开说了
+
+##### 混合器传递参数
+这时就更像一个`function`了
+```scss?
+@mixin link-colors($normal, $hover, $visited) {
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
+```
+所以接下来你在引入时需要给这个`CSS`函数传递必要的参数 就像这样
+```scss?
+a {
+  @include link-colors(blue, red, green);
+}
+```
+而在`Less`里就可以这样定义
+```scss?
+.link-colors($normal, $hover, $visited) {
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
+```
+那么调用的时候就是
+```scss?
+a {
+  .link-colors(blue, red, green);
+}
+```
+两者其实都差不多 只不过表示方式不太一样而已
+
+#### 4. 继承
+#### 5. 导入
+
 ## 总结
 
 不管是`Sass`，还是`Less`，`Stylus` 都可以视为一种基于`CSS`之上的高级语言，其目的是使得`CSS`开发更加灵活和强大
