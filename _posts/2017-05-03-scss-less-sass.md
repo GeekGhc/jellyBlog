@@ -229,11 +229,9 @@ nav {
 最后的编译结果看看也能知道就是:
 ```css? 
 nav {
-  border: {
-  style: solid;
-  width: 1px;
-  color: #ccc;
-  }
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
 }
 ```
 #### 3. Mixins (混合器)
@@ -340,9 +338,7 @@ a {
 #### 4. 继承
 任何`css`规则都可以继承其他规则，几乎任何`css`规则也都可以被继承.
 
-通常使用继承会让你的`css`美观、整洁。因为继承只会在生成`css`时复制选择器
-
-这些在`Less`是没有提供的 举个简单例子来说就是
+通常使用继承会让你的`css`美观、整洁。因为继承只会在生成`css`时复制选择器   
 ```scss?
 .menu {
   border: 1px solid #ddd;
@@ -358,6 +354,17 @@ a {
 }
 ```
 这样一来`.footer`继承了`.menu`的样式定义 那么我们就可以不用使用逗号将两者分开来写了
+
+在`Less`里我们同样可以这样写:
+```less?
+.menu {
+  border: 1px solid #ddd;
+}
+.footer {
+  &:extend .menu;
+}
+```
+最后编译出来的结果和之前是一样的
 
 #### 5. 导入
 在`Sass`的`import`的规则在生成`css`文件时就把所相关的文件导入进来了 这也就省去了额外的下载请求
@@ -390,6 +397,13 @@ aside {
     background: blue;
     color: #fff;
   }
+```
+
+
+和`Sass`差不多 在`Less`中 如果你导入的是`less`文件 完全可以省略后缀名:
+```less?
+@import "theme"; // theme.less
+@import "style.css";
 ```
 ## 总结
 
