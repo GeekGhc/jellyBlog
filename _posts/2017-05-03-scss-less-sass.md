@@ -356,7 +356,7 @@ a {
 这样一来`.footer`继承了`.menu`的样式定义 那么我们就可以不用使用逗号将两者分开来写了
 
 在`Less`里我们同样可以这样写:
-```less?
+```scss?
 .menu {
   border: 1px solid #ddd;
 }
@@ -401,7 +401,7 @@ aside {
 
 
 和`Sass`差不多 在`Less`中 如果你导入的是`less`文件 完全可以省略后缀名:
-```less?
+```scss?
 @import "theme"; // theme.less
 @import "style.css";
 ```
