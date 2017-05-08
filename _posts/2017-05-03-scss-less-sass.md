@@ -338,8 +338,59 @@ a {
 两者其实都差不多 只不过表示方式不太一样而已
 
 #### 4. 继承
-#### 5. 导入
+任何`css`规则都可以继承其他规则，几乎任何`css`规则也都可以被继承.
 
+通常使用继承会让你的`css`美观、整洁。因为继承只会在生成`css`时复制选择器
+
+这些在`Less`是没有提供的 举个简单例子来说就是
+```scss?
+.menu {
+  border: 1px solid #ddd;
+}
+.footer {
+  @extend .menu;
+}
+```
+这样编译后的效果和下面的是一样的:
+```css?
+.menu, .footer {
+  border: 1px solid #ddd;
+}
+```
+这样一来`.footer`继承了`.menu`的样式定义 那么我们就可以不用使用逗号将两者分开来写了
+
+#### 5. 导入
+在`Sass`的`import`的规则在生成`css`文件时就把所相关的文件导入进来了 这也就省去了额外的下载请求
+
+#####  使用SASS部分文件
+但你在写一些不需要独立生成`css`文件 而只是为了引入到其他的`sass`文件 那么这里的`sass`文件也叫局部文件 因为他不要单独生成
+对应的`css`文件  而是想结合其他的`sass`文件最终生成`css`文件
+
+对于这样的文件有个约定就是命名以下划线开头 而当引入这个文件时就只需要提供下划线后面的文件名即可
+
+如你想引入 `themes/_night-sky.scss` 这个局部文件里的变量 只需在样式表中写`@import "themes/night-sky"`
+
+这里介绍一个最为常用的场景就是嵌套的引入
+
+举例说明，有一个名为`_blue-theme.scss`的局部文件:
+```scss?
+aside {
+  background: blue;
+  color: white;
+}
+```
+
+如果你需要导入到`css`文件里 :
+```css?
+.blue-theme {@import "blue-theme"}
+
+//结果跟你直接在.blue-theme选择器内写_blue-theme.scss文件的内容完全一样。
+.blue-theme {
+  aside {
+    background: blue;
+    color: #fff;
+  }
+```
 ## 总结
 
 不管是`Sass`，还是`Less`，`Stylus` 都可以视为一种基于`CSS`之上的高级语言，其目的是使得`CSS`开发更加灵活和强大
