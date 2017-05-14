@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Laravel API开发
+title: Laravel API开发初探
 description: 在Web开发，Api开发是一项非常重要的技术，这里就以Laravel项目实例来开发API 熟悉下API的具体的流程
 tags:
      Laravel
@@ -15,6 +15,8 @@ poster: /attachments/images/articles/2017-03-18/poster.jpg
 
 在`Laravel`里我们会用`JWT`去开发我们的`API` 而这里我们就以`Laravel`项目为例 来开发我们的`API` 熟悉一下在
 项目里是怎么去开发`API`
+
+> 本文基于laravist的Api的开发教程  这里做为笔记使用
 
 ## 初始化数据
 因为我们这里是以`laravel`项目，所以我们可以先去生成一些测试数据 为了方便后面的数据操作
@@ -211,6 +213,81 @@ public function show($id)
     return \Response::json([
         'status_code'=>200,
         'data' => $this->postTransformer->transform($post)
+    ]);
+}
+```
+
+为了更好的管理返回信息的处理 我们可以把这部分代码抽离出来
+```shell
+$ php artisan make:controller ApiStatusCoontroller
+```
+
+在这个控制器里主要就是去实现各种状态信息的返回 这样我们在业务代码里只需要调用相应的状态函数即可
+```php?start_inline=1
+<?php
+namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
+class ApiStatusController extends Controller
+{
+    protected $statusCode = 200;//默认状态码
+
+    /**
+     * @return int
+     */
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
+    /**
+     * @param int $statusCode
+     */
+    public function setStatusCode($statusCode)
+    {
+        $this->statusCode = $statusCode;
+
+        return $this;
+    }
+
+    public function responseNotFound($message = 'Not found')
+    {
+        return $this->setStatusCode(404)->responseError($message);
+    }
+
+    public function responseError($message)
+    {
+        return $this->response([
+            'error'=>[
+                'status_code' => $this->getStatusCode(),
+                'message' => $message
+            ],
+        ]);
+    }
+    
+    public function response($data)
+    {
+        return \Response::json($data,$this->getStatusCode());
+    }
+}
+```
+
+这样一来如果我们需要返回错误处理的话 我们在目前的控制器 比如说`PostController`继承`ApiStatusController`
+
+然后在返回错误信息是=时就可以直接调用
+
+这样和之前其实是一样的 如果是正确的返回则直接调用`response`方法
+```php?start_inline=1
+public function show($id)
+{
+    $post = Post::find($id);
+    if(! $post){
+        return $this->responseNotFound();
+    }
+    return $this->response([
+        'status' => 'success',
+        'data' => $this->postTransformer->transform($lesson)
     ]);
 }
 ```
