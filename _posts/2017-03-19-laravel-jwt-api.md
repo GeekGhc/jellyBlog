@@ -113,6 +113,8 @@ class BaseController extends Controller
 
 这样我们就可以在routes里根据Dingo提供的方法去定义想要的api了
 ```php?start_inline=1
+$api = app('Dingo\Api\Routing\Router');
+
 $api->version('v1', function ($api) {
     $api->group(['namespace' => 'App\Api\Controllers'], function ($api) {
         $api->get('lessons','PostsController@index');
@@ -122,6 +124,81 @@ $api->version('v1', function ($api) {
 ```
 在PostsController的index返回所有数据 那么再去访问[http://localhost:8000/api/lessons](http://localhost:8000/api/lessons)
 就可以看到所有的数据了
+
+> 在这里路由的定义就是这样 这于我们之前自己写的路由方式还是不太一样的 因为这是Dingo为我们封装好的路由
+
+当然和之前的一样 我们需要对数据字段进行映射 那么我们可以在Api目录下新建Transformer目录 然后在这个目录下新建PostTransformer
+```php?start_inline=1
+<?php
+namespace App\Api\Transformer;
+use App\Post;
+use League\Fractal\TransformerAbstract;
+class PostTransformer extends TransformerAbstract
+{
+    public function transform(Post $post)
+    {
+        return [
+            'title' => $post['title'],
+            'content' => $post['body'],
+            'is_free' => (boolean)$ppost['free']
+        ];
+    }
+}
+```
+在这里我们是可以去Dingo APId的Transformer即TransformerAbstract
+
+这样写完我们就可以在控制器里去重新返回所有信息
+```php?start_inline
+ public function index()
+{
+    $lessons =  Post::all();
+
+    return $this->collection($post,new PostTransformer());
+}
+```
+
+> 这里的`PostTransformer`是 `App\Api\Transformer\PostTransformer`
+
+## 结合Jwt的auth认证
+在App\Api\Controllers目录下新建AuthController并继承之前定义好的BaseController
+
+在jwt的[创建token的页面](https://github.com/tymondesigns/jwt-auth/wiki/Creating-Tokens) 我们就可以使用它的authenticate方法
+```php?start_iinline=1
+public function authenticate(Request $request)
+{
+    // grab credentials from the request
+    $credentials = $request->only('email','password');
+    try {
+        // attempt to verify the credentials and create a token for the user
+        if (! $token = JWTAuth::attempt($credentials)) {
+            return response()->json(['error' => 'invalid_credentials'], 401);
+        }
+    } catch (JWTException $e) {
+        // something went wrong whilst attempting to encode the token
+        return response()->json(['error' => 'could_not_create_token'], 500);
+    }
+    // all good so return the token
+    return response()->json(compact('token'));
+}
+```
+
+为了执行这个方法 可以去路由中定义
+```php?start_inline=1
+$api->version('v1', function ($api) {
+    $api->group(['namespace' => 'App\Api\Controllers'], function ($api) {
+        $api->post('user/login','AuthController@authenticate');
+        $api->post('user/register','AuthController@register');
+    });
+});
+```
+这个时候再去查看一下我们的路由的话就会看到新定义的post路由
+
+为了验证请求的结果 我们可以使用postman这个chrome工具 去请求[http://localhost:8000/api/user/login](http://localhost:8000/api/user/login)
+
+这个时候是会返回`{"error":"invalid_credentials"}`
+
+为了能够正确通过我们可以在body部分给出用户邮箱和密码(用户可用thinker创建一个) 这个时候就会正确返回一个token
+![1](/attachments/images/articles/2017-03-19/1.png)
 
 ## 相关链接
 - [Dingo/api](https://github.com/dingo/api)
