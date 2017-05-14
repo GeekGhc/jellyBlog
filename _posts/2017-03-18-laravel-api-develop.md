@@ -16,7 +16,7 @@ poster: /attachments/images/articles/2017-03-18/poster.jpg
 在`Laravel`里我们会用`JWT`去开发我们的`API` 而这里我们就以`Laravel`项目为例 来开发我们的`API` 熟悉一下在
 项目里是怎么去开发`API`
 
-> 本文基于laravist的Api的开发教程  这里做为笔记使用
+> 本文基于laravist的Api的开发教程  作为笔记参考
 
 ## 初始化数据
 因为我们这里是以`laravel`项目，所以我们可以先去生成一些测试数据 为了方便后面的数据操作
