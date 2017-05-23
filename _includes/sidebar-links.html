@@ -10,7 +10,9 @@
     {% for link in site.data.sidebarLinks %}
     <tr class="item">
         <td>
-            <i class="icon bullseye"></i>
+            <div class="td-icon">
+                <i class="icon bullseye"></i>
+            </div>
             <a href="{{ link.link }}" target="_blank" class="title">{{ link.name }}</a>
         </td>
     </tr>

@@ -10,8 +10,10 @@
     {% for repository in site.data.repositories %}
     <tr class="item">
         <td>
-            <i class="icon cloud"></i>
-            <a href="{{ repository.link }}" target="_blank" class="title">{{ repository.title }}</a>
+            <div class="td-icon">
+                <i class="icon cloud"></i>
+            </div>
+                <a href="{{ repository.link }}" target="_blank" class="title">{{ repository.title }}</a>
         </td>
     </tr>
     {% endfor %}

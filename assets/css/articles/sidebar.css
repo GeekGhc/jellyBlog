@@ -12,6 +12,17 @@
 .aside-list > .item .title{
     font-size: 14px;
 }
+.aside-list > .item .td-icon{
+    display: inline-block;
+    width: 22px;
+    height: 100%;
+    float: left;
+}
+.aside-list > .item .td-box{
+    padding-left: 0px;
+    float: left;
+    display: inline-block;
+}
 .aside-list > .item  .article-title{
     display: inline-block;
     float: left;
