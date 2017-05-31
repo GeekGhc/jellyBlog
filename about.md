@@ -21,7 +21,7 @@ menu: About
 
 - QQ: 2438462863
 - 邮箱：gehuachun@outlook.com
-- 微博: [@Jelly葛](http://weibo.com/2721760737/profile?topnav=1&wvr=6)
+- 微博: [@Jenny葛](http://weibo.com/2721760737/profile?topnav=1&wvr=6)
 - 主页：[http://jellybook.me](http://jellybook.me)
 - 站点：[https://kobeman.com](https://kobeman.com)
 - Github：[@GeekGhc](https://gtihub.com/GeekGhc)
