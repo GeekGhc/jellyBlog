@@ -144,7 +144,7 @@ public function hasViewedArticle($article)
 //如果浏览过则获取session存入的浏览记录
 public function getViewedArticle($article)
 {
-    return $this->session->get('viewed_article'.$artice->id, []);
+    return $this->session->get('viewed_article', []);
 }
 
 //最近第一次浏览 存入session
