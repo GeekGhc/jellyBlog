@@ -177,7 +177,7 @@ public function show($id)
 在`App\Api\Controllers`目录下新建`AuthController`并继承之前定义好的`BaseController`
 
 在`jwt`的[创建token的页面](https://github.com/tymondesigns/jwt-auth/wiki/Creating-Tokens) 我们就可以使用它的`authenticate`方法
-```php?start_iinline=1
+```php?start_inline=1
 public function authenticate(Request $request)
 {
     // grab credentials from the request
@@ -205,7 +205,7 @@ $api->version('v1', function ($api) {
     });
 });
 ```
-这个时候再去查看一下我们的路由的话就会看到新定义的post路由
+这个时候再去查看一下我们的路由的话就会看到新定义的`post`路由
 
 为了验证请求的结果 我们可以使用`postman`这个`chrome`工具 去请求[http://localhost:8000/api/user/login](http://localhost:8000/api/user/login)
 
@@ -227,7 +227,7 @@ $api->group(['middleware'=>'jwt.auth'],function ($api){
 
 既然只有登录的用户才能访问到这些资源 那么我们是不是也可以去拿到登录的用户
 
-在[jwt的Authentication]里就提供了`getAuthenticatedUser`这个方法 所以为了查看效果 可以去注册一条路由
+在`jwt`的`Authentication`里就提供了`getAuthenticatedUser`这个方法 所以为了查看效果 可以去注册一条路由
 ```php?start_inline=1
 $api->group(['middleware'=>'jwt.auth'],function ($api){
     $api->get('user/me','AuthController@getAuthenticatedUser');
