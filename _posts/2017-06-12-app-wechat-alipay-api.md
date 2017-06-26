@@ -36,6 +36,7 @@ poster: /attachments/images/articles/2017-06-12/poster.jpg
 一开始当然是去微信的开发文档 了解下一些接口的具体参数信息  [App开发者文档](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_1)
 
 对于整个流程交互 先来一张微信提供的交互时序图
+
 ![1](/attachments/images/articles/2017-06-12/1.png)
 
 #### 交互流程
@@ -241,7 +242,7 @@ public function xmlToObject($xmlStr) {
 ```
 
 我们在微信回调接口里大致是这样:
-```php?start_inline1
+```php?start_inline=1
 public function wxpayCallback(Request $request)
     {
         $obj = $this->wxPay->getNotifyData();
