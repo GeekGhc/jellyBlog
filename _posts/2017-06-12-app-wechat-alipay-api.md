@@ -26,5 +26,37 @@ poster: /attachments/images/articles/2017-06-12/poster.jpg
 
 还有就是如今`php`对于处理`api`有完整的开源库 就比如对于`restful api`我们可以在`laravel`项目里集成`dingo Api`
 
+
 > 这里的内容在我的另一篇博客 [Laravel API结合Dingo API和JWT](http://jellybook.me/articles/2017/03/laravel-jwt-api)
+
+## 微信支付
+
+#### 准备工作
+
+一开始当然是去微信的开发文档 了解下一些接口的具体参数信息  [App开发者文档](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_1)
+
+对于整个流程交互 先来一张微信提供的交互时序图
+![1](/attachments/images/articles/2017-06-12/1.png)
+
+#### 交互流程
+理解这个交互流程还是很重要的  之前也提到过 无论是微信支付还是支付宝支付 有几个流程是不可少的
+
+1.用户在客户端`APP`选择商品 生成订单信息 选择微信支付方式
+2.商户后台收到用户支付单，调用微信支付统一下单接口。 参见[统一下单API]
+3.统一下单接口返回正常的`prepay_id`，再按签名规范重新生成签名后，将数据传输给客户端`APP`。
+  参与签名的字段名为`appId`，`partnerId`，`prepayId`，`nonceStr`，`timeStamp`，`package`。
+  注意：`package`的值格式为`Sign=WXPay`
+4.商户`APP`调起微信支付。`api` 参见[app端开发步骤说明](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5)
+5.商户后台接收支付通知。`api`参见 [支付结果通知API](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_7)
+6.商户后台查询支付结果。参见[查询订单API](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_2)
+7.商户后台回调支付结果等数据 参见[支付结果通知](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_7&index=3)
+
+#### 开发
+
+
+## 相关文档
+
+- GitHub地址  [PayApi](https://github.com/GeekGhc/PayApi)
+
+
 
