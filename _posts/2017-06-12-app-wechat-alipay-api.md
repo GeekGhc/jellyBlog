@@ -147,6 +147,194 @@ private function setSendData($data) {
 
 > `xml`数据要使用`<![CDATA[]]>`注释包裹
 
+对于包装好的数据我们可以生成相应的接口去发送请求 如果请求成功 微信会返回我们对应的信息
+
+![2](/attachments/images/articles/2017-06-12/2.png)
+其中我们需要关注一个 `prepay_id` 该参数是微信生成的预支付回话标识，用于后续接口调用中使用，该值有效期为**2**小时
+
+因为接下来我们要做的就是利用这个 `prepay_id` 再次进行签名然后返回给`APP`客户端  
+
+其中参与签名的字段有`appId` `partnerId` `prepayId` `nonceStr` `timeStamp`  `package`
+
+#### 调用支付接口
+
+因为在上一步中返回给我们这个 `prepay_id` 还有其他的返回数据 我们需要对数据进行解析 这样我们在确认返回成功之后再去对数据进行包装
+```php?start_inline=1
+$postObj = $encpt->xmlToObject($xml_data);            //解析返回数据
+if ($postObj === false) {
+    echo 'failed';
+    exit;             // 如果解析的结果为false，终止程序
+}
+if ($postObj->return_code == 'FAIL') {
+    echo $postObj->return_msg;            // 如果微信返回错误码为FAIL，则代表请求失败，返回失败信息
+} else {
+    //如果上一次请求成功，那么我们将返回的数据重新拼装，进行第二次签名
+    $resignData = array(
+        'appid'    =>    $postObj->appid,
+        'partnerId'    =>    $postObj->mch_id,
+        'prepayId'    =>    $postObj->prepay_id,
+        'nonceStr'    =>    $postObj->nonce_str,
+        'timeStamp'    =>    time(),
+        'package'    =>    'Sign=WXPay'
+        );
+    //二次签名；
+    $sign = $encpt->getClientPay($resignData);
+    echo $sign;
+}
+```
+这里的`xmlToObject`是用来解析返回的`xml`对象的  具体代码如下
+```php?start_inline=1
+public function xmlToObject($xmlStr) {
+    if (!is_string($xmlStr) || empty($xmlStr)) {
+        return false;
+    }
+    $postObj = simplexml_load_string($xmlStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+    $postObj = json_decode(json_encode($postObj));
+    //将xml数据转换成对象返回
+    return $postObj;
+}
+```
+
+这里的我们只需要注意
+- `mch_id` 即为 `partnerId`
+- 时间戳使用`time()`获取就好
+- `package`字段 暂填写固定值`Sign=WXPay`
+
+在生成签名之后 我们就可以将`sign`，`appId`，`partnerId`，`prepayId`，`nonceStr`，`timeStamp`，`package` 这些参数一起返回给`APP`客户端
+
+#### 支付结果返回
+
+支付请求发起后  微信端会触发我们在第一次填写的 `notify_url` 在这里我们就可以去完成对数据的相应逻辑 如更新订单和用户信息
+
+当然值得注意的是我们还需要执行的就是验签
+![2](/attachments/images/articles/2017-06-12/2.png)
+
+因为在这个结果返回的时候即想客户端APP返回支付结果 也会向商户后台服务器返回支付结果  我们需要做的就是获取并解析返回的结果
+
+接着对我们的项目执行处理更新  最后再去同步返回给微信
+
+首先我们先获取一下数据并解析成对象
+```php?start_inline=1
+/**
+     * 接收支付结果通知参数
+     * @return Object 返回结果对象；
+     */
+    public function getNotifyData()
+    {
+        $postXml = file_get_contents('php://input', 'r');      //接受通知参数；
+        if (empty($postXml)) {
+            return false;
+        }
+        $postObj = $this->xmlToObject($postXml);
+        if ($postObj === false) {
+            return false;
+        }
+        if (!empty($postObj->return_code)) {
+            if ($postObj->return_code == 'FAIL') {
+                return false;
+            }
+        }
+        return $postObj;
+    }
+```
+
+我们在微信回调接口里大致是这样:
+```php?start_inline1
+public function wxpayCallback(Request $request)
+    {
+        $obj = $this->wxPay->getNotifyData();
+        if ($obj->return_code != "SUCCESS") {
+            return response('failure');
+        } else {
+            $request = $this->rsaCheckV2($obj);
+            if ($request) {
+                //处理完后台逻辑成功
+                if ($res) {
+                    $reply = "<xml>
+                    <return_code><![CDATA[SUCCESS]]></return_code>
+                    <return_msg><![CDATA[OK]]></return_msg>
+                </xml>";
+                    echo $reply;      // 向微信后台返回结果
+                } else {
+                    return response('failure');
+                }
+            } else {
+                return response('failure');
+            }
+        }
+    }
+```
+这里的`rsaCheckV2`就是我们验签的方法:
+```php?start_inline=1
+public function rsaCheckV2($obj)
+    {
+        if($obj){
+            $data = array(
+            'appid'                =>    $obj->appid,
+            'mch_id'            =>    $obj->mch_id,
+            'nonce_str'            =>    $obj->nonce_str,
+            'result_code'        =>    $obj->result_code,
+            'openid'            =>    $obj->openid,
+            'return_code'       =>   $obj->return_code,
+            'fee_type'          =>    $obj->fee_type,
+            'is_subscribe'      =>      $obj->is_subscribe,
+            'trade_type'        =>    $obj->trade_type,
+            'bank_type'            =>    $obj->bank_type,
+            'total_fee'            =>    $obj->total_fee,
+            'cash_fee'            =>    $obj->cash_fee,
+            'transaction_id'    =>    $obj->transaction_id,
+            'out_trade_no'        =>    $obj->out_trade_no,
+            'time_end'            =>    $obj->time_end
+            );
+
+            $sign = $this->getSign($data);        // 获取签名 进行验证
+            if ($sign == $obj->sign) {
+                return true;
+            }else{
+                 return false;
+            }
+        }
+    }
+```
+
+这样一来我们就可以完成支付完成结果通知后的业务逻辑
+
+##### 查询订单
+
+对于我们的`APP`客户端依然要向我们发起一个请求，查询订单状态，此时我们需要客户端将订单号传递给我们，然后我们使用订单号，继续向微信发起请求：
+```php?start_inline=1
+public function queryOrder(Curl $curl, $out_trade_no) {
+    $nonce_str = $this->getNonceStr();
+    $data = array(
+        'appid'        =>    $this->appid,
+        'mch_id'    =>    $this->mch_id,
+        'out_trade_no'    =>    $out_trade_no,
+        'nonce_str'            =>    $nonce_str
+        );
+    $sign = $this->getSign($data);
+    $xml_data = '<xml>
+                   <appid>%s</appid>
+                   <mch_id>%s</mch_id>
+                   <nonce_str>%s</nonce_str>
+                   <out_trade_no>%s</out_trade_no>
+                   <sign>%s</sign>
+                </xml>';
+    $xml_data = sprintf($xml_data, $this->appid, $this->mch_id, $nonce_str, $out_trade_no, $sign);
+    $url = "https://api.mch.weixin.qq.com/pay/orderquery";
+    $curl->setUrl($url);
+    $content = $curl->execute(true, 'POST', $xml_data);
+    return $content;
+}
+```
+
+> 支付宝接口的处理会在以后的博客中继续更新 :bowtie:
+
+## 注意事项
+1.签名的字段参数小写
+
+2.验签时去除`sign`字段 返回剩余字段进行签名
+
+3.填写正确的商户`key`
 
 ## 相关文档
 
