@@ -25,16 +25,16 @@ poster: /attachments/images/articles/2017-06-20/poster.jpg
 
 Github项目地址 [GeekGhc/TopNews](https://github.com/GeekGhc/TopNews)
 
-## Preview：
+## 预览
 
-![1](/attachments/images/articles/2017-06-20/1.gif) ![2](/attachments/images/articles/2017-06-20/2.gif)
-![3](/attachments/images/articles/2017-06-20/01.png) ![2](/attachments/images/articles/2017-06-20/02.png)
-![3](/attachments/images/articles/2017-06-20/03.png) ![2](/attachments/images/articles/2017-06-20/04.png)
-![3](/attachments/images/articles/2017-06-20/05.png) ![2](/attachments/images/articles/2017-06-20/06.png)
-![3](/attachments/images/articles/2017-06-20/07.png) ![2](/attachments/images/articles/2017-06-20/08.png)
-![3](/attachments/images/articles/2017-06-20/09.png) ![2](/attachments/images/articles/2017-06-20/10.png)
+![1](/attachments/images/articles/2017-06-20/1.gif)![2](/attachments/images/articles/2017-06-20/2.gif)
+![3](/attachments/images/articles/2017-06-20/01.png)![4](/attachments/images/articles/2017-06-20/02.png)
+![5](/attachments/images/articles/2017-06-20/03.png)![6](/attachments/images/articles/2017-06-20/04.png)
+![7](/attachments/images/articles/2017-06-20/05.png)![8](/attachments/images/articles/2017-06-20/06.png)
+![9](/attachments/images/articles/2017-06-20/07.png)![10](/attachments/images/articles/2017-06-20/08.png)
+![11](/attachments/images/articles/2017-06-20/09.png)![12](/attachments/images/articles/2017-06-20/10.png)
 
-## Points
+## 要点摘要
 
 * 使用RxJava配合Retrofit2做网络请求
 * 使用RxUtil对线程操作和网络请求结果处理做了封装
@@ -55,7 +55,7 @@ Github项目地址 [GeekGhc/TopNews](https://github.com/GeekGhc/TopNews)
 * 使用ShareSdk的分享到第三方
 * 包含收藏等功能
 
-## Api
+## 项目Api
 
 - `Api`文档地址 [topnew-api](https://www.eolinker.com/#/share/index?shareCode=URBGwr)
 
