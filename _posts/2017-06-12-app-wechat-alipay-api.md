@@ -44,7 +44,7 @@ poster: /attachments/images/articles/2017-06-12/poster.jpg
 
 1.用户在客户端`APP`选择商品 生成订单信息 选择微信支付方式
 
-2.商户后台收到用户支付单，调用微信支付统一下单接口。 参见[统一下单API]
+2.商户后台收到用户支付单，调用微信支付统一下单接口 参见[统一下单API](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_1)
 
 3.统一下单接口返回正常的`prepay_id`，再按签名规范重新生成签名后，将数据传输给客户端`APP`。
   参与签名的字段名为`appId`，`partnerId`，`prepayId`，`nonceStr`，`timeStamp`，`package`。
