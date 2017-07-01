@@ -9,5 +9,5 @@ tags:
      Emoji
 class: post-six
 comments: true
-poster: /attachments/images/articles/2017-06-20/poster.jpg
+poster: /attachments/images/articles/2017-06-24/poster.jpg
 ---
