@@ -87,21 +87,23 @@ new Vue({
 
 除此之外我们可以看到这个`vue`实例包含了一个`App template` 而这个`template`就在我们的同级目录下的`App.vue`
 
-来到我们的`App.vue` 可以看到在上面其实就是定义了一个`template` 下面是一个script标签用来指明这个`template`
+来到我们的`App.vue` 可以看到在上面其实就是定义了一个`template` 下面是一个`script`标签用来指明这个`template`
 然后就是我们的`style`标签定义的样式
 
 可以想象得到的是因为我们我们是使用的`webpack`这个构建工具 所以`template`这个是交由我们的`html loader`去处理的
+
 而`script`里的内容是由`script loader`  `style`标签里的内容是交由我们的`style loader`去处理的
 
-在`App.vue`这个`template`里引入了在同级目录components下的`Hello`组件 它里面的内容就是我们一开始**8080**端口所看到的内容
+在`App.vue`这个`template`里引入了在同级目录`components`下的`Hello`组件 它里面的内容就是我们一开始**8080**端口所看到的内容
 
 在这之后我们就可以往用vue-cli构建的项目里面去添加我们需要的组件内容了
 
-假使我们需要添加一个`Todo`组件
-我们就可以在`src/components`下去创建`Todo.vue`
+假使我们需要添加一个`Todo`组件我们就可以在`src/components`下去创建`Todo.vue`
+
 他的具体内容当然是根据自己的业务去写了 每个组件的组成形式也就是我们之前提到的`Hello.vue`这样的(学习过vueJs的应该很容易就能理解这些文件的内容了)
 
 用`vue-cli`去构建我们的`vueJs`组件化开发大概就是这样 当然在这之后我们可以去利用`vueJs`官方推荐的`vue-router`
+
 去构建我们的**SPA(单页面应用)**
 
 
