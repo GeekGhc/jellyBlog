@@ -20,7 +20,7 @@ poster: /attachments/images/articles/2017-06-24/poster.jpg
 
 对应的表情代码 然后再去解析成图片的地址
 
-> 相应的解析代码我会放到我的`gist`里 [Emotion.php]()
+> 相应的解析代码我会放到我的`gist`里 [Emotion.php](https://gist.github.com/GeekGhc/69fd78164664f3515eb646d25eabd61a)
 
 ## 开始
 在数据库中用户的评论表情是以一定的文本格式存储的 比如`[dog-00]`,`[拜拜]`这样的形式 那么我们需要对这些特定的格式进行解析成
