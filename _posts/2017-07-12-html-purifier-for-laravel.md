@@ -93,5 +93,6 @@ return [
 
 ## 相关链接
 - [HtmlPurifier官网](http://htmlpurifier.org/)
+- [Purifier-for-laravel](https://github.com/mewebstudio/Purifier)
 - [跨站点脚本攻击深入解析](https://www.ibm.com/developerworks/cn/rational/08/0325_segal/)
 - [Laravel-China 使用 HTMLPurifier来解决Laravel5中的 XSS 跨站脚本攻击安全问题](https://laravel-china.org/articles/4798/the-use-of-htmlpurifier-to-solve-the-xss-xss-attacks-of-security-problems-in-laravel)
