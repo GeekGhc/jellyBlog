@@ -24,7 +24,7 @@ menu: About
 - 微博: [@Jenny葛](http://weibo.com/geekghc)
 - 主页：[http://jellybook.me](http://jellybook.me)
 - 站点：[https://kobeman.com](https://kobeman.com)
-- Github：[@GeekGhc](https://gtihub.com/GeekGhc)
+- Github：[@GeekGhc](https://github.com/GeekGhc)
 - SegmentFault :[@JellyBean](https://segmentfault.com/u/jellygavin)
 - Google：[@葛华春](https://plus.google.com/u/0/108390134136813492774)
 
