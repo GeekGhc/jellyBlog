@@ -103,6 +103,7 @@ $ systemctl restart crond
 对于每个框架都有自己的备份机制  我这里所写的是我们自己实现的一个通用的备份机制
 
 ## 相关链接
+- [crontab验证](https://crontab.guru/)
 - [oschina码云GIT免登陆用](http://fenxiang.banguanshui.com/content/oschina%E7%A0%81%E4%BA%91git%E5%85%8D%E7%99%BB%E9%99%86%E4%BD%BF%E7%94%A8)
 - [码云平台帮助文档](http://git.mydoc.io/?t=154712)
 - [CentOS下使用crontab命令来定时执行任务](http://blog.csdn.net/shenlingsuifeng/article/details/50888061)
