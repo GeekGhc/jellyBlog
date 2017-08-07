@@ -9,7 +9,7 @@ menu: About
 
 ## 葛华春
 
-现在是一名大三在校大学生,从事 **WEB** 开发，主要语言 `PHP` `C++` `Java`，熟悉 `Laravel`, `ThinkPHP` 框架，了解`NodeJs`的一些基本应用原理和实践
+现在是一名大三在校大学生,从事 **PHP WEB** 开发，主要语言 `PHP` `C++` `Java`，熟悉 `Laravel`, `ThinkPHP` 框架，了解`NodeJs`的一些基本应用原理和实践
 
 对于`VueJs`这样的前端构建框架有着开发经验,对现代化的 `PHP` 开发比较感兴趣 对移动端安卓开发有过项目经验 熟悉基本的架构模式
 
@@ -20,6 +20,7 @@ menu: About
 ## 联系
 
 - QQ: 2438462863
+- Tel: 13151568307
 - 邮箱：gehuachun@outlook.com
 - 微博: [@Jenny葛](http://weibo.com/geekghc)
 - 主页：[http://jellybook.me](http://jellybook.me)
