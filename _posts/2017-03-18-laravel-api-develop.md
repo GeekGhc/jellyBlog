@@ -13,7 +13,7 @@ poster: /attachments/images/articles/2017-03-18/poster.jpg
 ## 介绍
 关于`API`的开发 这在每个开发语言里都会有对应的开发方法 在`Python`里我们会用`django`框架去开发我们的`API`
 
-在`Laravel`里我们会用`JWT`去开发我们的`API` 而这里我们就以`Laravel`项目为例 来开发我们的`API` 熟悉一下在
+在`Laravel`里我们会用`Dingo`结合`JWT`认证去开发我们的`API` 而这里我们就以`Laravel`项目为例 来开发我们的`API` 熟悉一下在
 项目里是怎么去开发`API`
 
 > 本文基于laravist的Api的开发教程  作为笔记参考
@@ -169,7 +169,7 @@ abstract class Transformer
 }
 ```
 这里的抽象类我们可以继承之后对相应的数据表的字段进行映射 
-所以这里我们对posts表的字段进行映射时 我们就去创建`PostTransformer`类
+所以这里我们对`posts`表的字段进行映射时 我们就去创建`PostTransformer`类
 ```php?start_inline=1
 <?php
 namespace App\Transformer;
