@@ -64,7 +64,7 @@ class User extends Authenticatable
 }
 ```
 接着我们在 `AuthServiceProvider` 服务中添加路由方法(函数会注册一些发放令牌等一些必要的路由)
-```php?start_inliine=1
+```php?start_inline=1
 public function boot()
 {
     $this->registerPolicies();
@@ -170,7 +170,7 @@ Route::get('/redirect', function () {
 Route::get('callback','OAuthController@oauth');
 ```
 当然我们还是要去实现这样的回调方法
-```php?stRt_inline=1
+```php?start_inline=1
 public function oauth(Request $request)
 {
     $http = new GuzzleHttp\Client;
@@ -215,7 +215,7 @@ public function oauth(Request $request)
 所以在用`postman`去访问这个`http:///your-server.com/api/user`时 一开始是访问不到的
 ![3](/attachments/images/articles/2017-08-01/3.png)
 
-只有经过之前的授权认证 拿到我们的额`access_token` 这个时候加上这个参数再去访问这个url时我们就可以成功访问到了用户数据
+只有经过之前的授权认证 拿到我们的额`access_token` 这个时候加上这个参数再去访问这个`url`时我们就可以成功访问到了用户数据
 
 ## 总结
 其实整个的过程就是我们所熟悉的`oauth`认证过程 服务端创建一个客户端数据  这也就是对应着我们去一些开发平台盛情得到我们的
