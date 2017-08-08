@@ -17,6 +17,14 @@ poster: /attachments/images/articles/2017-04-28/poster.jpg
  
 结合自己以前遇到的各种坑和实践经验吧  这样也方便以后少浪费点时间在查找各种笔记 :smile:
 
+## 集成环境
+
+如果你嫌这样麻烦这里推荐一个非常实用的集成环境安装(也算是一个彩蛋喽)
+
+[https://oneinstack.com/](https://oneinstack.com/)
+
+当然如果你想自己手动安装的话就继续看看下面的文章吧
+
 ## 服务目录
 - Nginx      /etc/nginx
 - Mysql      /var/lib/mysql
