@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis在Laravel中应用实例
+title: Redis在Laravel中初识
 description: 对于缓存系统 如今网站基本都集成了非常不错的缓存驱动 如Redis和Memcached 今天来简单谈谈在Laravel中是
             这些缓存技术
 tags:
@@ -77,6 +77,11 @@ public function setInfo()
 
 ![1](/attachments/images/articles/2017-06-02/1.png)
 
+还有就是我们可以将`command`传递至服务器 它接收命令的名称作为第一个参数，第二个参数则为值的数组：
+```php?start_inline=1
+$values = Redis::command('lrange', ['name', 5, 10]);
+```
+
 当然还有一些其他的`Redis`的命令用户 在官方文档上都有介绍 包括我们的订阅和发布
 
 ## 通过Cache Facade
@@ -111,93 +116,6 @@ $value = Cache::remember('users', $minutes, function () {
 ```
 
 我们需要了解的也就是这些  当然还有一些增加缓存驱动  我们得结合具体的应用场景再说
-
-## 结合实例
-
-既然初步了解`Redis`在`Laravel`中的应用 那么我们试想这样的一个应用场景  一个文章或者帖子的浏览次数的统计 如果只是每次增加一个浏览量
-
-就到数据库新增一个数据 如果请求来那个太大这对数据库的消耗也就不言而喻了吧  那我们是不是可以有其他的解决方案
-
-这里的解决方案就是 即使你的网站的请求量很大 那么每次增加一个访问量就在缓存中去进行更改  至于刷新`Mysql`数据库可以自定义为
-
-多少分钟进行刷新一次或者访问量达到一定数量再去刷新数据库 这样数据也是准确的 效率也比直接每次刷新数据库要高出许多了
-
-既然给出了相应的解决方案  我们就开始实施
-
-我们以一篇帖子的浏览为例  我们先去创建对应的控制器
-```shell
-$ php artisan make:controller PostController
-```
-
-再去生成需要用到的 `Model`
-```shell
-$ php artisan make:model Post -m
-```
-
-填写`posts`的迁移表的字段内容
-```php?start_inline=1
-Schema::create('posts', function (Blueprint $table) {
-    $table->increments('id');
-    $table->string("title");
-    $table->string("content");
-    $table->integer('view_count')->unsigned();
-    $table->timestamps();
-});
-```
-
-还有就是我们测试的数据的`Seeder`填充数据
-```php?start_inline=1
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
-    return [
-        'title' => $faker->sentence,
-        'content' => $faker->paragraph,
-        'view_count' => 0
-    ];
-});
-```
-
-定义帖子的访问路由
-```php?start_inline=1
-Route::get('/post/{id}', 'PostController@showPost');
-```
-
-当然我们还是需要去写我们访问也就是浏览事件的(在`app/providers/EventServiceProvider`中定义)
-```php?start_inline=1
-protected $listen = [
-        'App\Events\PostViewEvent' => [
-//            'App\Listeners\EventListener',
-            'App\Listeners\PostEventListener',
-        ],
-    ];
-```
-
-执行事件生成监听
-```shell
-$ php artisan event:generate
-```
-
-之前定义了相关的路由方法  现在去实现一下:
-```php?start_inline=1
-public function showPost(Request $request,$id)
-{
-    //Redis缓存中没有该post,则从数据库中取值,并存入Redis中,该键值key='post:cache'.$id生命时间6分钟
-    $post = Cache::remember('post:cache:'.$id, $this->cacheExpires, function () use ($id) {
-        return Post::whereId($id)->first();
-    });
-
-    //获取客户端IP
-    $ip = $request->ip();
-    //触发浏览量计数器事件
-    event(new PostViewEvent($post, $ip));
-
-    return view('posts.show', compact('post'));
-}
-```
-
-这里看的出来就是以`Redis`作为缓存驱动 同样的  会获取获取的`ip`目的是防止同一个`ip`多次刷新来增加浏览量
-
-同样的每次浏览会触发我们之前定义的事件  传入我们的`post`和`id`参数
-
 
 
 
