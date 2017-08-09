@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis结合Laravel的应用实例
+title: Redis在项目中的应用实例
 description: 如今网站基本都集成了非常不错的缓存驱动 之前认识了Redis的基本使用  那么这里就结合一个帖子的浏览的应用
             实例去深入了解这些缓存机制的应用
 tags:
@@ -97,6 +97,8 @@ public function showPost(Request $request,$id)
 
 同样的每次浏览会触发我们之前定义的事件  传入我们的`post`和`id`参数
 
+> Redis的key的命名以:分割  这样可以理解为一个层级目录 在可视化工具里就可以看的很明显了
+
 
 接下来就是给出我们的`posts.show`的视图文件
 ```html
@@ -138,7 +140,7 @@ public function showPost(Request $request,$id)
     </div>
 </div>
 
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<!-- jQuery文件-->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -206,13 +208,11 @@ class PostEventListener
 
     }
 
+
     /**
-     * Handle the event.
-     * 监听用户浏览事件
-     * @param  PostViewCount  $event
-     * @return void
+     * @param PostViewEvent $event
      */
-    public function handle(PostViewCount $event)
+    public function handle(PostViewEvent $event)
     {
         $post = $event->post;
         $ip   = $event->ip;
@@ -225,7 +225,7 @@ class PostEventListener
     }
 
     /**
-     * 一段时间内,限制同一IP访问,防止增加无效浏览次数
+     * 限制同一IP一段时间内得访问,防止增加无效浏览次数
      * @param $id
      * @param $ip
      * @return bool
@@ -234,8 +234,9 @@ class PostEventListener
     {
         //redis中键值分割都以:来做，可以理解为PHP的命名空间namespace一样
         $ipPostViewKey    = 'post:ip:limit:'.$id;
-        //Redis命令SISMEMBER检查集合类型Set中有没有该键,该指令时间复杂度O(1),Set集合类型中值都是唯一
+        //Redis命令SISMEMBER检查集合类型Set中有没有该键,Set集合类型中值都是唯一
         $existsInRedisSet = Redis::command('SISMEMBER', [$ipPostViewKey, $ip]);
+        //如果集合中不存在这个建 那么新建一个并设置过期时间
         if(!$existsInRedisSet){
             //SADD,集合类型指令,向ipPostViewKey键中加一个值ip
             Redis::command('SADD', [$ipPostViewKey, $ip]);
@@ -243,21 +244,20 @@ class PostEventListener
             Redis::command('EXPIRE', [$ipPostViewKey, self::ipExpireSec]);
             return true;
         }
-
         return false;
     }
 
     /**
-     * 更新DB中post浏览次数
+     * 达到要求更新数据库的浏览量
      * @param $id
      * @param $count
      */
     public function updateModelViewCount($id, $count)
     {
         //访问量达到300,再进行一次SQL更新
-        $postModel              = Post::find($id);
-        $postModel->view_count += $count;
-        $postModel->save();
+        $post = Post::find($id);
+        $post->view_count += $count;
+        $post->save();
     }
 
     /**
@@ -267,14 +267,15 @@ class PostEventListener
      */
     public function updateCacheViewCount($id, $ip)
     {
-        $cacheKey        = 'post:view:'.$id;
+        $cacheKey = 'post:view:'.$id;
+        //这里以Redis哈希类型存储键,就和数组类似,$cacheKey就类似数组名  如果这个key存在
         if(Redis::command('HEXISTS', [$cacheKey, $ip])){
             //哈希类型指令HINCRBY,就是给$cacheKey[$ip]加上一个值,这里一次访问就是1
-            $incre_count = Redis::command('HINCRBY', [$cacheKey, $ip, 1]);
-            //redis中这个存储浏览量的值达到30后,就往MySQL里刷下,这样就不需要每一次浏览,来一次query,效率不高
-            if($incre_count == self::postViewLimit){
-                $this->updateModelViewCount($id, $incre_count);
-                //本篇post,redis中浏览量刷进MySQL后,把该篇post的浏览量键抹掉,等着下一次请求重新开始计数
+            $save_count = Redis::command('HINCRBY', [$cacheKey, $ip, 1]);
+            //redis中这个存储浏览量的值达到30后,就去刷新一次数据库
+            if($save_count == self::postViewLimit){
+                $this->updateModelViewCount($id, $save_count);
+                //本篇post,redis中浏览量刷进MySQL后,就把该篇post的浏览量清空,重新开始计数
                 Redis::command('HDEL', [$cacheKey, $ip]);
                 Redis::command('DEL', ['laravel:post:cache:'.$id]);
             }
@@ -284,4 +285,12 @@ class PostEventListener
         }
     }
 }
+
 ```
+
+最后可以通过我们的工具查看具体效果
+
+![1](/attachments/images/articles/2017-06-03/1.png)
+
+## 相关链接
+- [Redis 命令](https://redis.io/commands)
