@@ -158,19 +158,19 @@ class PostViewEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    protected $id;
+    protected $ip;
     protected $post;
 
 
     /**
      * PostViewEvent constructor.
      * @param Post $post
-     * @param $id
+     * @param $ip
      */
-    public function __construct(Post $post, $id)
+    public function __construct(Post $post, $ip)
     {
         $this->post = $post;
-        $this->id = $id;
+        $this->ip = $ip;
     }
 
     /**
@@ -197,7 +197,7 @@ class PostEventListener
     /**
      * 同一用户浏览同一post过期时间
      */
-    const ipExpireSec   = 300;
+    const ipExpireSec = 300;
 
     /**
      * Create the event listener.
@@ -232,7 +232,6 @@ class PostEventListener
      */
     public function ipViewLimit($id, $ip)
     {
-        //redis中键值分割都以:来做，可以理解为PHP的命名空间namespace一样
         $ipPostViewKey    = 'post:ip:limit:'.$id;
         //Redis命令SISMEMBER检查集合类型Set中有没有该键,Set集合类型中值都是唯一
         $existsInRedisSet = Redis::command('SISMEMBER', [$ipPostViewKey, $ip]);
