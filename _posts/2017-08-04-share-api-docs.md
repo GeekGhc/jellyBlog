@@ -33,3 +33,32 @@ $ apidoc -h
 ```
 
 下面会看到一些参数  这里简单介绍几个
+| 标题 | 地址 |
+| ------ | ------ |
+| -o | 指定文档的输出目录 |
+| -i | 输入文件夹 这里包含了|
+| -t | 指定输出文件的模板 |
+| -c | 指定配置文件的文件目录 |
+
+接下来就是配置文件`appidoc.json`的定义  实例如下
+```php?start_inline=1
+{
+  "name" : "codespace",
+  "version": "1.0.0",
+  "title": "codespace",
+  "description": test project"
+}
+```
+当然配置文件的内容放入`package.json`也是可以的(相同的字段就和`package.json`一样 而不一样的就放在`apidoc`下)
+```php?start_inline=1
+{
+  "name": "codespace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "test project",
+  "apidoc": {
+    "title": "codespace"
+  },
+  ...
+}
+```
