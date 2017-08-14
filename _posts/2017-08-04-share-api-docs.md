@@ -27,6 +27,37 @@ poster: /attachments/images/articles/2017-08-04/poster.jpg
 $ npm install apidoc -g
 ```
 
+`apidoc`支持`Grunt`，主页[https://github.com/apidoc/grunt-apidoc](https://github.com/apidoc/grunt-apidoc)
+
+在项目中可以使用`npm install grunt-apidoc --save-dev`安装
+
+添加`grunt.loadNpmTasks('grunt-apidoc')`到`Gruntfile.js`
+
+添加`grunt task` 这里面包含了输出目录等信息
+```php?start_inline=1
+apidoc: {
+      myapp: {
+        src: "app/",
+        dest: "apidoc/"
+      }
+}
+```
+
+```php?start_inline=1
+module.exports = function(grunt) {
+    grunt.config.set('clean', {
+      apidoc: {
+        myapp: {
+          src: "app/",
+          dest: "apidoc/"
+        }
+      }
+    });
+    grunt.loadNpmTasks('grunt-apidoc');
+};
+```
+
+
 安装完毕之后可以查看一下命令
 ```shell
 $ apidoc -h
@@ -165,7 +196,7 @@ $  apidoc -i myapp/ -o apidoc/
 
 ### @apiParam
 接口的请求参数 列举出接口的请求参数 类型 是否可选等(可选的话`[]`包含参数名)  如
-```pho?start_inline=1
+```php?start_inline=1
 @apiParam {Number} id Users unique ID.
 @apiParam {String} [firstname] Firstname of the User.
 ```
@@ -178,7 +209,7 @@ $  apidoc -i myapp/ -o apidoc/
 
 ### @apiSuccessExample Success-Response:
 接口请求成功返回的形式事例  如
-```pho?start_inline=1
+```php?start_inline=1
 HTTP/1.1 200 OK
       {
         "firstname": "John",
@@ -197,3 +228,6 @@ HTTP/1.1 404 Not Found
         "error": "UserNotFound"
       }
 ```
+
+事例效果图
+![1](/attachments/images/articles/2016-08-04/1.png)
