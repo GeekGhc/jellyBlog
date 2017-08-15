@@ -40,7 +40,7 @@ $ php artisan vendor:publish --provider="Dingo\Api\Provider\LaravelServiceProvid
 ```
 添加对应的服务:
 ```php?start_inline=1
-'Tymon\JWTAuth\Providers\JWTAuthServiceProvider'
+'Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class'
 ```
 当然也是需要去配置一下他的`alias`
 ```php?start_inline=1
