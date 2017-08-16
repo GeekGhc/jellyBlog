@@ -1,7 +1,8 @@
 ---
 layout: post
 title: API文档编写-apidocJs
-description: 
+description: 在后台编写api文档时  我们如果希望自己的文档注释就可以自动解析成接口文档 那么改完注释代码 
+            接口文档也会更新 这样就不十分方便
 tags:
      API
      docs

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: GitLab [Webhooks] 实现自动化服务器部署
-description: 
+description: 利用的GitLab创建私人仓库 通过钩子实现代码推送时能同步到服务器 这样也就实现了自动化的部署
 tags:
      github
      deployment
@@ -64,10 +64,14 @@ $ ssh -T git@gitlab.com
 ```
 如果没有问题的话 会回馈给我们正确的欢迎信息
 
+> 具体的生成信息可以看官方的 [ssh文档](https://gitlab.com/help/ssh/README)
+
+
 
 
 ## 相关链接
 - [GitLab 官网](https://gitlab.com/)
 - [Coding 官网](https://coding.net)
 - [码云 官网](http://git.oschina.net)
+- [GitLab key生成](https://gitlab.com/help/ssh/README)
 
