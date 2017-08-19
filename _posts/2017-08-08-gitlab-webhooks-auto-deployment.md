@@ -66,10 +66,83 @@ $ ssh -T git@gitlab.com
 
 > 具体的生成信息可以看官方的 [ssh文档](https://gitlab.com/help/ssh/README)
 
+我们在此之前在`GitLab`已经上传了我们的项目 在项目中的`Setting->Integrations`里添加脚本钩子
+
+比如这边我添加的url是`http://kobeman.com/hook/index.php`
+
+然后填入的`token`是`ispace`
+
+现在可以去服务器的站点目录下克隆远程仓库的项目 这里我的站点目录是`/data/www`
+
+那么在这个目录下克隆我们远程的项目 克隆完毕后 当然这里以`Laravel`项目为例 完成一些权限 这些可自行查阅
+
+能够成功跑起来我们的项目就**ok**  这里我访问的网址是`www.kobeman.com`  下面就需要添加钩子文件
+
+这里我们项目的根目录 这里可以是`public`目录下新建`hook`目录  添加一个`index.php`  具体内容如下
+
+> 具体代码我已经放在我的[gist](https://gist.github.com/GeekGhc/43b0927de6016578f741bc6beab3023a)上  如果有什么问题欢迎提出`issue`
+
+```php?start_inline=1
+<?php
+
+error_reporting(1);
+
+$target = '/data/www/ISpace'; // 生产环境web目录
+
+$token = 'ispace'; //GitLab 添加的token
+$wwwUser = 'root';
+$wwwGroup = 'root';
 
 
+if (empty($_SERVER['HTTP_X_GITLAB_TOKEN']) || $_SERVER['HTTP_X_GITLAB_TOKEN'] !== $token) {
+    exit('error request');
+}
+
+/*if($_SERVER['HTTP_X_GITLAB_TOKEN'] == $token){
+    echo "校验成功";
+}*/
+
+//$repo = $json['repository']['name'];
+
+// $cmds = array(
+//     "cd $target && git pull",
+//     "chown -R {$wwwUser}:{$wwwGroup} $target/",
+// );
+
+// foreach ($cmds as $cmd) {
+//     shell_exec($cmd);
+// }
+
+chdir($target);
+
+$cmd = "sudo -Hu root git pull";
+
+shell_exec($cmd);
+```
+
+这里的钩子文件需要注意以下几点
+- `php`配置里需要注释掉`shell_exec`这些被禁用的函数 详见[shell_exec](https://www.zhihu.com/question/57879484?from=profile_question_card)
+- 执行命令时切换到管理员用户最好
+- 查看是否进入你的项目目录 这里我是通过`chdir`进入项目目录 因为`cd`命令是没有用的 详见[Can't 'cd' with PHP shell_exec()](https://stackoverflow.com/questions/12521053/cant-cd-with-php-shell-exec)
+
+
+这里为什么我们需要获取这个`$_SERVER`的参数呢 因为`GitLab`是通过`post`请求这个地址 所以为了验证之前填入的`token`
+
+我们这里是去验证他的请求头部  因为他是以请求头部传递给我们的  如图所示
+![1](/attachments/images/articles/2017-08-08/1.png)
+
+为了了解他的头部到底包含了什么信息  我们可以都打印出来看下
+![2](/attachments/images/articles/2017-08-08/2.png)
+
+所以说如果我们验证这个`token`成功的话再去进入到项目目录 执行`git pull`拉取我们最新的代码 这样也就实现了
+自动化的代码部署  在验证过程中我打印了下这个 `$_SERVER['HTTP_X_GITLAB_TOKEN']`
+
+![3](/attachments/images/articles/2017-08-08/3.png)
+
+这样一来下次再去提交我们的最新的功能代码时就可以哦同步到我们的服务器
 
 ## 相关链接
+- [Gist 地址](https://gist.github.com/GeekGhc/43b0927de6016578f741bc6beab3023a)
 - [GitLab 官网](https://gitlab.com/)
 - [Coding 官网](https://coding.net)
 - [码云 官网](http://git.oschina.net)
