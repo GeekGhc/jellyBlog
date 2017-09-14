@@ -275,7 +275,7 @@ class ApiStatusController extends Controller
 
 这样一来如果我们需要返回错误处理的话 我们在目前的控制器 比如说`PostController`继承`ApiStatusController`
 
-然后在返回错误信息是=时就可以直接调用
+然后在返回错误信息时就可以直接调用
 
 这样和之前其实是一样的 如果是正确的返回则直接调用`response`方法
 ```php?start_inline=1
