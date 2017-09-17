@@ -79,6 +79,21 @@ public function boot()
 
 如果我们需要返回该用户的帖子  这也很简单 再增加一个`posts`字段就是了 不够再此之前先关联一下用户和帖子的关系
 
+当然有一种应用场景就是我们对字段数据的判断  就如文档中所说如果是管理员的话我们就返回特定的字段  反之不然
+
+`laravel`为我们提供了`when` 这个 `function`  具体判断则是
+```php?start_inline=1
+public function toArray($request)
+{
+    return [
+        'name'=>$this->name,
+        'email'=>$this->email,
+        'secret' => $this->when($this->isAdmin(), 'secret-value'),
+    ];
+}
+```
+这个时候只有`$this->isAdmin`返回为`true`时  返回字段里才会出现`secret`这个`key`  不然的话在返回之前就已经过滤掉了
+
 `ok` 在很多的场景中  我们需要返回的是一个`collection`比如一个用户的所有帖子  那么`api resource`同样为我们提供了对collection
 的处理方式  在终端执行
 ```shell
@@ -107,4 +122,24 @@ Route::get('user',function(){
 从返回的数据我们可以看到新增了`links`和`meta`字段里面包含了分页我们可能需要的数据 如上一页下一页
 
 如果需要对用户的帖子字段进行映射  创建一个`Post Resource`再进行一次`transformer`就行
+
+对于关联数据的返回可以如以前所说采用`eager loader`来避免N+1的查询  那么在路由方法中我们可以采用`with('posts')`这样的方式
+
+当然在`Resource`里我们还可以采用提供给我们的`whenLoaded` 这个`function`  具体表现为
+```php?start_inline=1
+ public function toArray($request)
+    {
+        return [
+            'name'=>$this->name,
+            'email'=>$this->email,
+            'posts'=>Post::collection($this->whenLoaded('posts'))
+        ];
+    }
+```
+
+
+
+## 相关链接
+
+- [Eloquent: API 资源](https://d.laravel-china.org/docs/5.5/eloquent-resources)
 
