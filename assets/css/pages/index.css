@@ -60,3 +60,18 @@
 .page-content .links>a:hover{
     color: #00adb5;
 }
+
+.flex-page .copyRight{
+    z-index: 100;
+    margin: 36px 0;
+    box-sizing: border-box;
+    text-align: center;
+    position: fixed;
+    bottom: 36px;
+}
+
+.flex-page .copyRight a{
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
