@@ -70,7 +70,7 @@ print_r($data->all());
 ```
 这样我们其实和再去定义规则筛选的结果是一样的  只不过这样的方式更为简单方便
 
-除了`find`还有一些其他的常用的Api用法其实和我们平时写`js`时差不多  如获取文本 获取`html`文本 获取孩子节点等
+除了`find`还有一些其他的常用的`Api`用法其实和我们平时写`js`时差不多  如获取文本 获取`html`文本 获取孩子节点等
 
 具体的用法和举例文档上也写的很清楚了 [https://doc.querylist.cc/site/index/doc/20](https://doc.querylist.cc/site/index/doc/20)
 
@@ -119,7 +119,7 @@ $ql->use(AbsoluteUrl::class);
 //或者自定义函数名
 $ql->use(AbsoluteUrl::class,'absoluteUrl','absoluteUrlHelper');
 ```
-这里的use就是引入我们的url插件  这样的话我们就可以转换一个也页面的所有url
+这里的`use`就是引入我们的`url`插件  这样的话我们就可以转换一个也页面的所有url
 ```php?start_inline=1
 $data = $ql->get('https://toutiao.io/')
     ->absoluteUrl('https://toutiao.io/')
