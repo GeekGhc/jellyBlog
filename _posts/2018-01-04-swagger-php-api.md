@@ -23,6 +23,8 @@ $ composer require zircote/swagger-php
 
 安装完毕之后 我们可以在应用的目录`App/Http`下新建`Api`目录用来存放我们的`Api`接口
 
+新建一个`BaseController`来写基本的返回信息格式 当然在这个控制器里也会标注我们接口的版本信息
+
 ## 相关链接
 - [swagger官网](https://swagger.io/)
 - [zircote/swagger-php插件地址](https://github.com/zircote/swagger-php)
