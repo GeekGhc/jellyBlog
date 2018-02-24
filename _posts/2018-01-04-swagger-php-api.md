@@ -25,6 +25,25 @@ $ composer require zircote/swagger-php
 
 新建一个`BaseController`来写基本的返回信息格式 当然在这个控制器里也会标注我们接口的版本信息
 
+在`BaseController`里去定义接口的版本等信息
+```php?start_inline=1
+/**
+ * @SWG\Swagger(
+ *   host="www.geekghc.com",
+ *   schemes={"http", "https"},
+ *   basePath="/api/",
+ *   @SWG\Info(
+ *     version="1.0.0",
+ *     title="codespace API文档",
+ *     description="codespace community description...",
+ *   )
+ * )
+ */
+```
+这里指明了`host` `version` `title` `description`这些描述信息 在接下来的接口类中都会继承这个父类
+
+在解释器最终形成文档时也只会去解析这样的非代码的解释语言 最终就是得我们的`Api`文档
+
 ## 相关链接
 - [swagger官网](https://swagger.io/)
 - [zircote/swagger-php插件地址](https://github.com/zircote/swagger-php)
