@@ -44,6 +44,10 @@ $ composer require zircote/swagger-php
 
 在解释器最终形成文档时也只会去解析这样的非代码的解释语言 最终就是得我们的`Api`文档
 
+在这里我们最终生成的是`json`组成的文件信息,那么如果只是这样留给我们的前端相比会一脸懵逼,作为接口文档我们
+
+希望其他人可以在线执行模拟接口信息并提供一定的`UI`这样看起来才是友好的
+
 ## 相关链接
 - [swagger官网](https://swagger.io/)
 - [zircote/swagger-php插件地址](https://github.com/zircote/swagger-php)
