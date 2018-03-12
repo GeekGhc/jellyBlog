@@ -48,6 +48,8 @@ $ composer require zircote/swagger-php
 
 希望其他人可以在线执行模拟接口信息并提供一定的`UI`这样看起来才是友好的
 
+接下来新建一个路由用来展示最终的`Api`文档
+
 ## 相关链接
 - [swagger官网](https://swagger.io/)
 - [zircote/swagger-php插件地址](https://github.com/zircote/swagger-php)
