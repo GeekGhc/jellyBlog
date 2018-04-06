@@ -50,6 +50,17 @@ $ composer require zircote/swagger-php
 
 接下来新建一个路由用来展示最终的`Api`文档
 
+```php?start_inline=1
+//api文档
+Route::get('/api/docs',function(){
+   return view('apidoc');
+});
+//api文档json
+Route::get('get/swagger', ['middleware' => 'auth', function () {
+    echo file_get_contents('./swagger.json');
+}]);
+
+
 ## 相关链接
 - [swagger官网](https://swagger.io/)
 - [zircote/swagger-php插件地址](https://github.com/zircote/swagger-php)
