@@ -60,12 +60,12 @@ $ curl -X GET 'localhost:9200/?pretty'
 ## 使用
 在开始使用`ES`之前可以大概了解一下他与我们平时的关系型数据库的对比
 | MySQL        |  ES   |
-| --------   | :----: |
-| Database（数据库）        |   Index （索引）    |
-| Table（表）        |   Type （类型）   |
-| Row （行）         |   Document （文档）    |
-| Index （索引）       |   Everything Indexed by default （所有字段都被索引））    |
-| SQL （结构化查询语言）       |   Query DSL （查询专用语言）    |
+| --------   | -------------- |
+| Database（数据库）|   Index （索引）|
+| Table（表）|   Type （类型）|
+| Row（行）|   Document （文档） |
+| Index（索引）|   Everything Indexed by default （所有字段都被索引））|
+| SQL（结构化查询语言）| Query DSL（查询专用语言）|
 
 > 值得注意的是：Type在6.0.0版本中已经不赞成使用
 
@@ -88,7 +88,8 @@ epoch  timestamp cluster  status node.total node.data shards pri relo init unass
 - yellow - 所有数据是可以获取的，但是一些复制品还没有被分配(集群功能齐全)
 - red  一些数据因为一些原因获取不到(集群部分功能不可用)
 
-2. 查看节点
+
+2.查看节点
 ```shell
 $ curl -X GET 'localhost:9200/_cat/nodes?v&pretty'
 ```
