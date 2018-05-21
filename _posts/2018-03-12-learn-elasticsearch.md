@@ -59,13 +59,13 @@ $ curl -X GET 'localhost:9200/?pretty'
 
 ## 使用
 在开始使用`ES`之前可以大概了解一下他与我们平时的关系型数据库的对比
-| MySQL        |  ES   |
-| --------   | -------------- |
-| Database（数据库）|   Index （索引）|
-| Table（表）|   Type （类型）|
-| Row（行）|   Document （文档） |
-| Index（索引）|   Everything Indexed by default （所有字段都被索引））|
-| SQL（结构化查询语言）| Query DSL（查询专用语言）|
+| MySQL  |  ES   |
+| --------   | -------- |
+| Database（数据库）  |   Index （索引）|
+| Table（表）        |   Type （类型）|
+| Row（行）          |   Document （文档） |
+| Index（索引）      |   Everything Indexed by default （所有字段都被索引））|
+| SQL（结构化查询语言）|   Query DSL（查询专用语言）|
 
 > 值得注意的是：Type在6.0.0版本中已经不赞成使用
 
@@ -382,5 +382,102 @@ curl -X GET 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/j
 ```
 例使用`bool`查询返回所有余额在**20000**到**30000**之间的账户(包含边界)。换句话说，我们想查询账户余额大于等于**20000**并且小于等于**30000**的用户。
 
+### 使用`ik`分词进行搜索
+为了实现分词 在`github`上根据文档进行安装[https://github.com/medcl/elasticsearch-analysis-ik](https://github.com/medcl/elasticsearch-analysis-ik)
+
+因为我这里版本是**6.2.3**的 在当前目录可以执行
+```shell
+$ ./bin/elasticsearch-plugin install https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.2.3/elasticsearch-analysis-ik-6.2.3.zip
+```
+安装完毕之后重启`ES` 在去执行`list`命令查看是否有这个`plugin`
+```shell
+$ ./bin/elasticsearch-plugin list
+```
+
+下面可以进行一次关键词搜索 需指定高亮的字段
+```shell
+curl -X POST 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": { "match": { "address" : "993" } },
+  "highlight" : {
+        "pre_tags" : ["<tag1>", "<tag2>"],
+        "post_tags" : ["</tag1>", "</tag2>"],
+        "fields" : {
+            "address" : {}
+        }
+    }
+}'
+```
+这里我们就是去查找`address`字段含有`993`的文档数据
+
+最后返回的结果为:
+```shell
+{
+  "took" : 187,
+  "timed_out" : false,
+  "_shards" : {
+    "total" : 5,
+    "successful" : 5,
+    "skipped" : 0,
+    "failed" : 0
+  },
+  "hits" : {
+    "total" : 2,
+    "max_score" : 4.388994,
+    "hits" : [
+      {
+        "_index" : "bank",
+        "_type" : "account",
+        "_id" : "766",
+        "_score" : 4.388994,
+        "_source" : {
+          "account_number" : 766,
+          "balance" : 21957,
+          "firstname" : "Thomas",
+          "lastname" : "Gillespie",
+          "age" : 38,
+          "gender" : "M",
+          "address" : "993 Williams Place",
+          "employer" : "Octocore",
+          "email" : "thomasgillespie@octocore.com",
+          "city" : "Defiance",
+          "state" : "MS"
+        },
+        "highlight" : {
+          "address" : [
+            "<tag1>993</tag1> Williams Place"
+          ]
+        }
+      },
+      {
+        "_index" : "bank",
+        "_type" : "account",
+        "_id" : "58",
+        "_score" : 4.388994,
+        "_source" : {
+          "account_number" : 58,
+          "balance" : 31697,
+          "firstname" : "Marva",
+          "lastname" : "Cannon",
+          "age" : 40,
+          "gender" : "M",
+          "address" : "993 Highland Place",
+          "employer" : "Comcubine",
+          "email" : "marvacannon@comcubine.com",
+          "city" : "Orviston",
+          "state" : "MO"
+        },
+        "highlight" : {
+          "address" : [
+            "<tag1>993</tag1> Highland Place"
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
 ## 相关连接
 - [ES6.2官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/6.2/getting-started.html)
+- [IK Analysis for Elasticsearch](https://github.com/medcl/elasticsearch-analysis-ik)
