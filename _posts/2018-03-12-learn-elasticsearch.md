@@ -109,7 +109,7 @@ health status index uuid pri rep docs.count docs.deleted store.size pri.store.si
 ```
 ### 使用事例
 1.先尝试创建一个索引
-```shelll
+```shell
 $ curl -X PUT 'localhost:9200/user?pretty&pretty'
 ```
 返回的结果为:
@@ -189,6 +189,7 @@ $curl -X DELETE 'localhost:9200/customer?pretty&pretty'
  > 当然也可以同时进行插入和删除等操作
  
  ## 搜索
+ 
  在使用搜索之前我们需要一批数据 这里我引用别人的一段`json`数据 其生成工具是[www.json-generator.com](www.json-generator.com)
  
  > json-generator 里面会有字段的定义语法 对着它的帮组文档可以定义你需要的字段
@@ -310,3 +311,75 @@ curl -X GET 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/j
 }
 '
 ```
+当然我们回遇到多个查询条件 如满足关键词既包含`mail`也包含`com`关键词那么其语法为:
+```shell
+curl -X GET 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "com" } }
+      ]
+    }
+  }
+}
+'
+```
+对应与的操作还有或操作 即包含`mail`或`com`
+```shell
+curl -X GET 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "com" } }
+      ]
+    }
+  }
+}
+'
+```
+当然还有非这样的操作 即没有这两个关键词
+```shell
+curl -X GET 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "bool": {
+      "must_not": [
+        { "match": { "address": "mill" } },
+        { "match": { "address": "com" } }
+      ]
+    }
+  }
+}
+'
+```
+从上面三个事例可以看出`bool`下其实包含了三种组合 `must` `should` `must_not`对应着与或非  你可以随意组合这些条件
+
+### 判断过滤
+在查询语言中经常会遇到一些大于等于小于这些判断过滤  这在`ES`中的表现为
+```shell
+curl -X GET 'localhost:9200/bank/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "bool": {
+      "must": { "match_all": {} },
+      "filter": {
+        "range": {
+          "balance": {
+            "gte": 20000,
+            "lte": 30000
+          }
+        }
+      }
+    }
+  }
+}
+'
+```
+例使用`bool`查询返回所有余额在**20000**到**30000**之间的账户(包含边界)。换句话说，我们想查询账户余额大于等于**20000**并且小于等于**30000**的用户。
+
+## 相关连接
+- [ES6.2官方文档](https://www.elastic.co/guide/en/elasticsearch/reference/6.2/getting-started.html)
